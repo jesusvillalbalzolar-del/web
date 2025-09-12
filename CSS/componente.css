@@ -1764,4 +1764,201 @@ h2 {
 }
 
 
+/* =============================
+   RESPONSIVIDAD
+============================= */
+/* Tablet */
+@media (max-width: 992px) {
+  .quienes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+}
 
+/* Móvil */
+@media (max-width: 600px) {
+  .quienes-grid {
+    grid-template-columns: 1fr;
+  }
+  .card-title {
+    font-size: 1.2rem;
+  }
+  .card-description {
+    font-size: 0.95rem;
+  }
+  #donde-estamos iframe {
+    height: 300px;
+  }
+}
+
+/* Teléfonos muy pequeños */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  #donde-estamos h2 {
+    font-size: 1.6rem;
+  }
+  #donde-estamos p {
+    font-size: 1rem;
+  }
+  #donde-estamos iframe {
+    height: 250px;
+  }
+}
+
+/* =============================
+   ANIMACIONES (opcionales)
+============================= */
+.animate-fadeInDown {
+  opacity: 0;
+  animation: fadeInDown 0.8s ease forwards;
+}
+
+.animate-fadeInUp {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ==============
+   RESPONSIVE BREAKPOINTS
+================= */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .section-focus h1,
+  .carousel-title,
+  .benefits-section .section-title,
+  #video-institucional h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+  .section-focus h1 {
+    font-size: 1.8rem;
+  }
+  .section-focus p,
+  .benefits-section .section-subtitle,
+  #video-institucional p {
+    font-size: 1rem;
+  }
+  .instagram-section iframe {
+    height: 400px;
+  }
+  .carousel-content img,
+  .marquee-content img {
+    height: 40px;
+  }
+}
+
+/* Teléfonos muy pequeños */
+@media (max-width: 480px) {
+  .section-focus h1,
+  .carousel-title,
+  .benefits-section .section-title {
+    font-size: 1.6rem;
+  }
+  .section-focus p,
+  .benefits-section .section-subtitle {
+    font-size: 0.95rem;
+  }
+  .instagram-section iframe {
+    height: 300px;
+  }
+}
+
+/* ==============
+   ANIMACIONES OPCIONALES
+================= */
+.animate-fadeInDown {
+  opacity: 0;
+  animation: fadeInDown 0.8s ease forwards;
+}
+.animate-fadeInUp {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+@keyframes fadeInDown {
+  from {opacity:0; transform:translateY(-20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+@keyframes fadeInUp {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+
+/* ======= Responsividad ======= */
+@media (max-width: 768px) {
+  .accordion-section {
+    padding: 40px 15px;
+  }
+  .accordion-section h2 {
+    font-size: 1.8rem;
+  }
+  .accordion-header {
+    font-size: 1rem;
+    padding: 16px;
+  }
+  .accordion-content {
+    font-size: 0.95rem;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .accordion-section h2 {
+    font-size: 1.5rem;
+  }
+  .accordion-header {
+    font-size: 0.95rem;
+    padding: 14px;
+  }
+  .accordion-content {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+  .ir-btn {
+    font-size: 0.85rem;
+    padding: 8px 14px;
+  }
