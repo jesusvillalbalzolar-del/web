@@ -1859,7 +1859,6 @@ h2 {
     grid-template-columns: repeat(2, 1fr);
   }
   .section-focus h1,
-  .carousel-title,
   .benefits-section .section-title,
   #video-institucional h2 {
     font-size: 2rem;
@@ -1885,7 +1884,6 @@ h2 {
   .instagram-section iframe {
     height: 400px;
   }
-  .carousel-content img,
   .marquee-content img {
     height: 40px;
   }
@@ -1894,7 +1892,6 @@ h2 {
 /* Teléfonos muy pequeños */
 @media (max-width: 480px) {
   .section-focus h1,
-  .carousel-title,
   .benefits-section .section-title {
     font-size: 1.6rem;
   }
@@ -1962,3 +1959,4 @@ h2 {
     font-size: 0.85rem;
     padding: 8px 14px;
   }
+
