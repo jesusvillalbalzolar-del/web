@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Archivos - Supabase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .drag-area {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .drag-area.active {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        .progress-bar {
+            height: 6px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+        }
+        .progress-value {
+            height: 100%;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .grid-item {
+            transition: transform 0.2s ease;
+        }
+        .grid-item:hover {
+            transform: scale(1.02);
+        }
+        .folder-item {
+            transition: all 0.2s ease;
+        }
+        .folder-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .breadcrumb-item {
+            transition: all 0.2s ease;
+        }
+        .breadcrumb-item:hover {
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-800">Gestor de Archivos</h1>
+                <p class="text-gray-600 mt-2">Gestiona tus archivos y directorios en Supabase Storage</p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div id="connectionStatus" class="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full flex items-center">
+                    <i class="fas fa-database mr-1"></i> Conectado a Supabase
+                </div>
+                <button id="refreshBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg flex items-center">
+                    <i class="fas fa-sync-alt mr-2"></i> Actualizar
+                </button>
+            </div>
+        </header>
+
+        <!-- Breadcrumb Navigation -->
+        <nav id="breadcrumb" class="bg-white rounded-xl shadow-md p-4 mb-6 flex items-center space-x-2">
+            <button id="rootBtn" class="text-blue-500 hover:text-blue-700 font-medium flex items-center">
+                <i class="fas fa-home mr-1"></i> Inicio
+            </button>
+            <!-- Breadcrumb items will be added here dynamically -->
+        </nav>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap gap-3 mb-6">
+            <button id="createFolderBtn" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center">
+                <i class="fas fa-folder-plus mr-2"></i> Nueva Carpeta
+            </button>
+            <button id="uploadBtnMain" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center">
+                <i class="fas fa-upload mr-2"></i> Subir Archivos
+            </button>
+        </div>
+
+        <!-- Upload Section -->
+        <section id="uploadSection" class="bg-white rounded-xl shadow-md p-6 mb-8 hidden">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Subir archivos a <span id="currentFolderName">Raíz</span></h2>
+            <div class="flex flex-col md:flex-row gap-6">
+                <!-- Drag & Drop Area -->
+                <div class="flex-1">
+                    <div id="dragArea" class="drag-area p-8 text-center cursor-pointer">
+                        <div class="py-8">
+                            <i class="fas fa-cloud-upload-alt text-4xl text-blue-500 mb-4"></i>
+                            <p class="text-gray-600">Arrastra y suelta tus archivos aquí</p>
+                            <p class="text-sm text-gray-500 mt-2">o</p>
+                            <label for="fileInput" class="mt-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg inline-block cursor-pointer">
+                                <i class="fas fa-folder-open mr-2"></i> Seleccionar archivos
+                            </label>
+                            <input type="file" id="fileInput" class="hidden" multiple accept="image/*">
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-500 mt-2">
+                        Formatos soportados: JPG, PNG, GIF, WEBP (Máx. 10MB por archivo)
+                    </div>
+                </div>
+
+                <!-- Upload Options -->
+                <div class="md:w-1/3">
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                        <h3 class="font-medium text-blue-800 mb-2">Opciones de subida</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="compressImages" class="mr-2" checked>
+                                <label for="compressImages" class="text-sm">Comprimir imágenes</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="createThumbnails" class="mr-2" checked>
+                                <label for="createThumbnails" class="text-sm">Crear miniaturas</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="uploadBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium flex items-center justify-center">
+                        <i class="fas fa-upload mr-2"></i> Iniciar subida
+                    </button>
+                    <button id="cancelUploadBtn" class="w-full bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-lg font-medium flex items-center justify-center mt-3">
+                        <i class="fas fa-times mr-2"></i> Cancelar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div id="progressSection" class="hidden mt-6">
+                <h3 class="text-lg font-medium text-gray-800 mb-2">Progreso de subida</h3>
+                <div id="uploadProgress" class="space-y-4">
+                    <!-- Los elementos de progreso se agregarán dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold text-gray-800">Contenido de <span id="currentLocation">Raíz</span></h2>
+                <span id="itemCount" class="text-sm text-gray-500">0 elementos</span>
+            </div>
+            
+            <div id="loadingIndicator" class="text-center py-12">
+                <i class="fas fa-spinner fa-spin text-3xl text-blue-500 mb-2"></i>
+                <p class="text-gray-600">Cargando contenido...</p>
+            </div>
+            
+            <div id="emptyState" class="hidden text-center py-12 bg-white rounded-xl shadow-md">
+                <i class="fas fa-folder-open text-4xl text-gray-300 mb-4"></i>
+                <h3 class="text-lg font-medium text-gray-600 mb-2">Carpeta vacía</h3>
+                <p class="text-gray-500">No hay archivos ni subcarpetas en este directorio.</p>
+            </div>
+            
+            <!-- Folders Grid -->
+            <div id="foldersGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6 hidden">
+                <!-- Las carpetas se mostrarán aquí dinámicamente -->
+            </div>
+            
+            <!-- Files Grid -->
+            <div id="filesGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 hidden">
+                <!-- Los archivos se mostrarán aquí dinámicamente -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal para previsualización -->
+    <div id="previewModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl overflow-hidden max-w-4xl w-full mx-4">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h3 id="modalTitle" class="text-lg font-semibold">Vista previa</h3>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-4 max-h-[70vh] overflow-auto">
+                <img id="modalImage" src="" alt="Vista previa" class="max-w-full mx-auto">
+            </div>
+            <div class="flex justify-between p-4 border-t">
+                <a id="downloadBtn" href="#" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center">
+                    <i class="fas fa-download mr-2"></i> Descargar
+                </a>
+                <button id="deleteBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg flex items-center">
+                    <i class="fas fa-trash mr-2"></i> Eliminar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para crear carpeta -->
+    <div id="createFolderModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl overflow-hidden max-w-md w-full mx-4">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h3 class="text-lg font-semibold">Crear nueva carpeta</h3>
+                <button id="closeCreateFolderModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <div class="mb-4">
+                    <label for="folderName" class="block text-sm font-medium text-gray-700 mb-1">Nombre de la carpeta</label>
+                    <input type="text" id="folderName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Ingresa el nombre">
+                    <p class="text-xs text-gray-500 mt-1">Solo se permiten letras, números, guiones y espacios.</p>
+                </div>
+            </div>
+            <div class="flex justify-end p-4 border-t">
+                <button id="cancelCreateFolder" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg mr-2">
+                    Cancelar
+                </button>
+                <button id="confirmCreateFolder" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg">
+                    Crear carpeta
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para confirmar eliminación -->
+    <div id="confirmDeleteModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl overflow-hidden max-w-md w-full mx-4">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h3 class="text-lg font-semibold">Confirmar eliminación</h3>
+                <button id="closeDeleteModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <p id="deleteMessage" class="text-gray-700">¿Estás seguro de que quieres eliminar este elemento?</p>
+            </div>
+            <div class="flex justify-end p-4 border-t">
+                <button id="cancelDelete" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg mr-2">
+                    Cancelar
+                </button>
+                <button id="confirmDelete" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Font Awesome para iconos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+    <script>
+        // Configuración de Supabase
+        const supabaseUrl = 'https://jqpoqwrallgsqzshtped.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpxcG9xd3JhbGxnc3F6c2h0cGVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0NzM2NTcsImV4cCI6MjA3MzA0OTY1N30.U1V0gCQyKIQNsIRUw4RamaZzvVXYUcdaZhhXxP-YvG8';
+        const bucketName = 'cebne';
+        
+        // Variables globales
+        let selectedFiles = [];
+        let currentFiles = [];
+        let currentFolders = [];
+        let currentFile = null;
+        let currentFolder = null;
+        let currentPath = '';
+        
+        // Elementos DOM
+        const dragArea = document.getElementById('dragArea');
+        const fileInput = document.getElementById('fileInput');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const uploadBtnMain = document.getElementById('uploadBtnMain');
+        const cancelUploadBtn = document.getElementById('cancelUploadBtn');
+        const progressSection = document.getElementById('progressSection');
+        const uploadProgress = document.getElementById('uploadProgress');
+        const filesGrid = document.getElementById('filesGrid');
+        const foldersGrid = document.getElementById('foldersGrid');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const emptyState = document.getElementById('emptyState');
+        const previewModal = document.getElementById('previewModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const deleteBtn = document.getElementById('deleteBtn');
+        const closeModal = document.getElementById('closeModal');
+        const refreshBtn = document.getElementById('refreshBtn');
+        const itemCount = document.getElementById('itemCount');
+        const connectionStatus = document.getElementById('connectionStatus');
+        const breadcrumb = document.getElementById('breadcrumb');
+        const rootBtn = document.getElementById('rootBtn');
+        const createFolderBtn = document.getElementById('createFolderBtn');
+        const uploadSection = document.getElementById('uploadSection');
+        const currentFolderName = document.getElementById('currentFolderName');
+        const currentLocation = document.getElementById('currentLocation');
+        const createFolderModal = document.getElementById('createFolderModal');
+        const closeCreateFolderModal = document.getElementById('closeCreateFolderModal');
+        const cancelCreateFolder = document.getElementById('cancelCreateFolder');
+        const confirmCreateFolder = document.getElementById('confirmCreateFolder');
+        const folderName = document.getElementById('folderName');
+        const confirmDeleteModal = document.getElementById('confirmDeleteModal');
+        const closeDeleteModal = document.getElementById('closeDeleteModal');
+        const cancelDelete = document.getElementById('cancelDelete');
+        const confirmDelete = document.getElementById('confirmDelete');
+        const deleteMessage = document.getElementById('deleteMessage');
+        
+        // Headers para las solicitudes a la API
+        const apiHeaders = {
+            'apikey': supabaseKey,
+            'Authorization': `Bearer ${supabaseKey}`,
+            'Content-Type': 'application/json'
+        };
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar la aplicación
+            loadContent();
+            
+            // Eventos para drag and drop
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dragArea.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            dragArea.addEventListener('dragover', () => {
+                dragArea.classList.add('active');
+            });
+            
+            dragArea.addEventListener('dragleave', () => {
+                dragArea.classList.remove('active');
+            });
+            
+            dragArea.addEventListener('drop', (e) => {
+                dragArea.classList.remove('active');
+                const files = e.dataTransfer.files;
+                handleFiles(files);
+            });
+            
+            // Eventos para selección de archivos
+            fileInput.addEventListener('change', (e) => {
+                handleFiles(e.target.files);
+            });
+            
+            dragArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            // Evento para subir archivos
+            uploadBtn.addEventListener('click', uploadFiles);
+            
+            // Eventos para el modal
+            closeModal.addEventListener('click', () => {
+                previewModal.classList.add('hidden');
+            });
+            
+            deleteBtn.addEventListener('click', () => {
+                showDeleteConfirm(currentFile.name, 'file');
+            });
+            
+            // Evento para actualizar
+            refreshBtn.addEventListener('click', loadContent);
+            
+            // Eventos para navegación
+            rootBtn.addEventListener('click', () => {
+                navigateTo('');
+            });
+            
+            // Eventos para gestión de carpetas
+            createFolderBtn.addEventListener('click', showCreateFolderModal);
+            closeCreateFolderModal.addEventListener('click', hideCreateFolderModal);
+            cancelCreateFolder.addEventListener('click', hideCreateFolderModal);
+            confirmCreateFolder.addEventListener('click', createFolder);
+            
+            // Eventos para modal de confirmación de eliminación
+            closeDeleteModal.addEventListener('click', hideDeleteModal);
+            cancelDelete.addEventListener('click', hideDeleteModal);
+            confirmDelete.addEventListener('click', executeDelete);
+            
+            // Eventos para mostrar/ocultar sección de subida
+            uploadBtnMain.addEventListener('click', () => {
+                uploadSection.classList.remove('hidden');
+            });
+            
+            cancelUploadBtn.addEventListener('click', () => {
+                uploadSection.classList.add('hidden');
+                selectedFiles = [];
+                progressSection.classList.add('hidden');
+            });
+        });
+        
+        // Función para navegar entre directorios
+        function navigateTo(path) {
+            currentPath = path;
+            loadContent();
+            updateBreadcrumb();
+        }
+        
+        // Función para actualizar el breadcrumb
+        function updateBreadcrumb() {
+            // Limpiar breadcrumb (excepto el botón de inicio)
+            while (breadcrumb.children.length > 1) {
+                breadcrumb.removeChild(breadcrumb.lastChild);
+            }
+            
+            // Si estamos en la raíz, no agregar más elementos
+            if (!currentPath) return;
+            
+            // Dividir la ruta en partes
+            const parts = currentPath.split('/').filter(part => part !== '');
+            let accumulatedPath = '';
+            
+            // Agregar cada parte al breadcrumb
+            parts.forEach((part, index) => {
+                accumulatedPath += part + '/';
+                
+                const span = document.createElement('span');
+                span.className = 'text-gray-400';
+                span.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                breadcrumb.appendChild(span);
+                
+                const button = document.createElement('button');
+                button.className = 'breadcrumb-item text-blue-500 hover:text-blue-700 font-medium';
+                button.textContent = decodeURIComponent(part);
+                button.addEventListener('click', () => {
+                    navigateTo(accumulatedPath.slice(0, -1));
+                });
+                
+                breadcrumb.appendChild(button);
+            });
+        }
+        
+        // Función para cargar contenido del directorio actual
+        async function loadContent() {
+            loadingIndicator.classList.remove('hidden');
+            filesGrid.classList.add('hidden');
+            foldersGrid.classList.add('hidden');
+            emptyState.classList.add('hidden');
+            
+            try {
+                // Obtener lista de archivos y carpetas desde Supabase Storage
+                const response = await fetch(
+                    `${supabaseUrl}/storage/v1/object/list/${bucketName}`,
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${supabaseKey}`,
+                            'apikey': supabaseKey,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            limit: 100,
+                            offset: 0,
+                            prefix: currentPath ? currentPath + '/' : '',
+                            sortBy: {
+                                column: 'name',
+                                order: 'asc'
+                            }
+                        })
+                    }
+                );
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Error al cargar el contenido: ${response.status} ${errorText}`);
+                }
+                
+                const data = await response.json();
+                
+                // Separar archivos y carpetas
+                currentFolders = [];
+                currentFiles = [];
+                
+                data.forEach(item => {
+                    // Si el nombre termina con "/", es una carpeta
+                    if (item.name.endsWith('/')) {
+                        currentFolders.push(item);
+                    } else {
+                        currentFiles.push(item);
+                    }
+                });
+                
+                renderContent();
+                itemCount.textContent = `${currentFolders.length + currentFiles.length} elementos`;
+                currentLocation.textContent = currentPath ? decodeURIComponent(currentPath) : 'Raíz';
+                currentFolderName.textContent = currentPath ? decodeURIComponent(currentPath) : 'Raíz';
+                
+            } catch (error) {
+                console.error('Error loading content:', error);
+                loadingIndicator.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                
+                // Actualizar estado de conexión
+                connectionStatus.className = 'text-sm bg-red-100 text-red-800 px-3 py-1 rounded-full flex items-center';
+                connectionStatus.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i> Error de conexión';
+            }
+        }
+        
+        // Función para renderizar contenido (carpetas y archivos)
+        function renderContent() {
+            loadingIndicator.classList.add('hidden');
+            
+            if (currentFolders.length === 0 && currentFiles.length === 0) {
+                emptyState.classList.remove('hidden');
+                filesGrid.classList.add('hidden');
+                foldersGrid.classList.add('hidden');
+                return;
+            }
+            
+            // Renderizar carpetas
+            if (currentFolders.length > 0) {
+                foldersGrid.innerHTML = '';
+                foldersGrid.classList.remove('hidden');
+                
+                currentFolders.forEach(folder => {
+                    // Extraer el nombre de la carpeta de la ruta completa
+                    const folderPathParts = folder.name.split('/').filter(part => part !== '');
+                    const folderName = folderPathParts[folderPathParts.length - 2] || '';
+                    
+                    const folderElement = document.createElement('div');
+                    folderElement.classList.add('folder-item', 'bg-white', 'rounded-lg', 'shadow-md', 'overflow-hidden', 'cursor-pointer');
+                    folderElement.innerHTML = `
+                        <div class="p-4 flex items-center">
+                            <i class="fas fa-folder text-3xl text-yellow-500 mr-3"></i>
+                            <div class="flex-1">
+                                <h3 class="text-sm font-medium truncate">${decodeURIComponent(folderName)}</h3>
+                                <p class="text-xs text-gray-500">Carpeta</p>
+                            </div>
+                            <div class="folder-actions opacity-0 transition-opacity">
+                                <button class="text-gray-500 hover:text-red-500 delete-folder-btn p-1">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Evento para navegar a la carpeta
+                    folderElement.addEventListener('click', (e) => {
+                        if (!e.target.closest('.folder-actions')) {
+                            navigateTo(folder.name.slice(0, -1));
+                        }
+                    });
+                    
+                    // Mostrar acciones al pasar el mouse
+                    folderElement.addEventListener('mouseenter', () => {
+                        folderElement.querySelector('.folder-actions').classList.remove('opacity-0');
+                    });
+                    
+                    folderElement.addEventListener('mouseleave', () => {
+                        folderElement.querySelector('.folder-actions').classList.add('opacity-0');
+                    });
+                    
+                    // Evento para eliminar carpeta
+                    const deleteBtn = folderElement.querySelector('.delete-folder-btn');
+                    deleteBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        showDeleteConfirm(folder.name, 'folder');
+                    });
+                    
+                    foldersGrid.appendChild(folderElement);
+                });
+            } else {
+                foldersGrid.classList.add('hidden');
+            }
+            
+            // Renderizar archivos
+            if (currentFiles.length > 0) {
+                filesGrid.innerHTML = '';
+                filesGrid.classList.remove('hidden');
+                
+                currentFiles.forEach(file => {
+                    // Extraer el nombre del archivo de la ruta completa
+                    const filePathParts = file.name.split('/');
+                    const fileName = filePathParts[filePathParts.length - 1];
+                    
+                    const fileUrl = `${supabaseUrl}/storage/v1/object/public/${bucketName}/${file.name}`;
+                    
+                    const fileElement = document.createElement('div');
+                    fileElement.classList.add('grid-item', 'bg-white', 'rounded-lg', 'shadow-md', 'overflow-hidden', 'cursor-pointer');
+                    fileElement.innerHTML = `
+                        <div class="relative aspect-square bg-gray-200 overflow-hidden">
+                            <img src="${fileUrl}" 
+                                 alt="${fileName}" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkeT0iLjM1ZW0iIGZvbnQtc2l6ZT0iMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5OTkiPkVycm9yIGNhcmdhbmRvIGltYWdlbjwvdGV4dD48L3N2Zz4='">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-opacity flex items-center justify-center opacity-0 hover:opacity-100">
+                                <i class="fas fa-eye text-white text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <h3 class="text-sm font-medium truncate">${fileName}</h3>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-xs text-gray-500">${formatFileSize(file.metadata?.size || 0)}</span>
+                                <span class="text-xs text-gray-500">${formatDate(file.created_at)}</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    fileElement.addEventListener('click', () => {
+                        openPreviewModal(file);
+                    });
+                    
+                    filesGrid.appendChild(fileElement);
+                });
+            } else {
+                filesGrid.classList.add('hidden');
+            }
+            
+            emptyState.classList.add('hidden');
+        }
+        
+        // Función para manejar los archivos seleccionados
+        function handleFiles(files) {
+            selectedFiles = Array.from(files).filter(file => file.type.includes('image'));
+            
+            // Validar tamaño de archivos (max 10MB)
+            const tooLargeFiles = selectedFiles.filter(file => file.size > 10 * 1024 * 1024);
+            if (tooLargeFiles.length > 0) {
+                alert('Algunos archivos superan el límite de 10MB. Serán excluidos.');
+                selectedFiles = selectedFiles.filter(file => file.size <= 10 * 1024 * 1024);
+            }
+            
+            if (selectedFiles.length === 0) return;
+            
+            // Mostrar la sección de progreso
+            progressSection.classList.remove('hidden');
+            uploadProgress.innerHTML = '';
+            
+            // Crear elementos de progreso para cada archivo
+            selectedFiles.forEach((file, index) => {
+                const fileElement = document.createElement('div');
+                fileElement.classList.add('bg-gray-50', 'p-3', 'rounded-lg');
+                fileElement.innerHTML = `
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium truncate">${file.name}</span>
+                        <span class="text-xs text-gray-500">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-value" style="width: 0%"></div>
+                    </div>
+                    <div class="flex justify-between mt-1">
+                        <span class="text-xs text-gray-500">${formatFileSize(file.size)}</span>
+                        <span class="text-xs text-gray-500">Esperando...</span>
+                    </div>
+                `;
+                uploadProgress.appendChild(fileElement);
+            });
+        }
+        
+        // Función para subir archivos a Supabase Storage
+        async function uploadFiles() {
+            if (selectedFiles.length === 0) {
+                alert('Por favor, selecciona al menos un archivo para subir.');
+                return;
+            }
+            
+            // Deshabilitar el botón de subida
+            uploadBtn.disabled = true;
+            uploadBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Subiendo...';
+            
+            for (let i = 0; i < selectedFiles.length; i++) {
+                const file = selectedFiles[i];
+                const fileName = `${Date.now()}-${file.name}`;
+                const fullPath = currentPath ? `${currentPath}/${fileName}` : fileName;
+                
+                // Actualizar el estado de progreso
+                const progressElement = uploadProgress.children[i];
+                const progressText = progressElement.querySelector('span:first-child');
+                const progressPercent = progressElement.querySelector('span:nth-child(2)');
+                const progressBar = progressElement.querySelector('.progress-value');
+                const statusText = progressElement.querySelector('span:last-child');
+                
+                progressText.textContent = `Subiendo: ${file.name}`;
+                statusText.textContent = 'Subiendo...';
+                
+                try {
+                    // Subir el archivo al almacenamiento de Supabase
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    
+                    const uploadResponse = await fetch(
+                        `${supabaseUrl}/storage/v1/object/${bucketName}/${fullPath}`,
+                        {
+                            method: 'POST',
+                            headers: {
+                                'Authorization': `Bearer ${supabaseKey}`,
+                                'apikey': supabaseKey
+                            },
+                            body: formData
+                        }
+                    );
+                    
+                    if (!uploadResponse.ok) {
+                        const errorData = await uploadResponse.json();
+                        throw new Error(errorData.message || 'Error al subir el archivo');
+                    }
+                    
+                    // Actualizar estado a completado
+                    progressPercent.textContent = '100%';
+                    progressBar.style.width = '100%';
+                    progressBar.classList.add('bg-green-500');
+                    statusText.textContent = 'Completado';
+                    
+                } catch (error) {
+                    console.error('Error uploading file:', error);
+                    progressPercent.textContent = 'Error';
+                    progressBar.style.width = '100%';
+                    progressBar.classList.add('bg-red-500');
+                    statusText.textContent = 'Error: ' + error.message;
+                }
+            }
+            
+            // Restablecer el botón de subida
+            uploadBtn.disabled = false;
+            uploadBtn.innerHTML = '<i class="fas fa-upload mr-2"></i> Iniciar subida';
+            
+            // Recargar el contenido
+            setTimeout(loadContent, 1000);
+        }
+        
+        // Función para abrir el modal de previsualización
+        function openPreviewModal(file) {
+            currentFile = file;
+            const fileUrl = `${supabaseUrl}/storage/v1/object/public/${bucketName}/${file.name}`;
+            
+            // Extraer el nombre del archivo de la ruta completa
+            const filePathParts = file.name.split('/');
+            const fileName = filePathParts[filePathParts.length - 1];
+            
+            modalTitle.textContent = fileName;
+            downloadBtn.href = fileUrl;
+            downloadBtn.download = fileName;
+            
+            modalImage.src = fileUrl;
+            previewModal.classList.remove('hidden');
+        }
+        
+        // Función para mostrar modal de creación de carpeta
+        function showCreateFolderModal() {
+            folderName.value = '';
+            createFolderModal.classList.remove('hidden');
+        }
+        
+        // Función para ocultar modal de creación de carpeta
+        function hideCreateFolderModal() {
+            createFolderModal.classList.add('hidden');
+        }
+        
+        // Función para crear carpeta
+        async function createFolder() {
+            const name = folderName.value.trim();
+            
+            if (!name) {
+                alert('Por favor, ingresa un nombre para la carpeta.');
+                return;
+            }
+            
+            // Validar nombre de carpeta
+            const validName = /^[a-zA-Z0-9 _-]+$/.test(name);
+            if (!validName) {
+                alert('El nombre de la carpeta solo puede contener letras, números, espacios, guiones y guiones bajos.');
+                return;
+            }
+            
+            try {
+                // Crear la carpeta en Supabase Storage
+                // Las carpetas en Supabase se crean subiendo un objeto vacío con nombre que termina en "/"
+                const folderPath = currentPath ? `${currentPath}/${name}/` : `${name}/`;
+                
+                const response = await fetch(
+                    `${supabaseUrl}/storage/v1/object/${bucketName}/${folderPath}`,
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${supabaseKey}`,
+                            'apikey': supabaseKey
+                        },
+                        body: new Blob() // Objeto vacío
+                    }
+                );
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Error al crear la carpeta');
+                }
+                
+                hideCreateFolderModal();
+                loadContent();
+                
+            } catch (error) {
+                console.error('Error creating folder:', error);
+                alert('Error al crear la carpeta: ' + error.message);
+            }
+        }
+        
+        // Función para mostrar modal de confirmación de eliminación
+        function showDeleteConfirm(name, type) {
+            currentFolder = name;
+            
+            // Extraer el nombre para mostrar
+            let displayName;
+            if (type === 'folder') {
+                const pathParts = name.split('/').filter(part => part !== '');
+                displayName = pathParts[pathParts.length - 2] || '';
+            } else {
+                const pathParts = name.split('/');
+                displayName = pathParts[pathParts.length - 1];
+            }
+            
+            deleteMessage.textContent = `¿Estás seguro de que quieres eliminar ${type === 'folder' ? 'la carpeta' : 'el archivo'} "${decodeURIComponent(displayName)}"?`;
+            confirmDelete.dataset.type = type;
+            confirmDeleteModal.classList.remove('hidden');
+        }
+        
+        // Función para ocultar modal de confirmación de eliminación
+        function hideDeleteModal() {
+            confirmDeleteModal.classList.add('hidden');
+        }
+        
+        // Función para ejecutar eliminación
+        async function executeDelete() {
+            const type = confirmDelete.dataset.type;
+            
+            try {
+                if (type === 'file') {
+                    // Eliminar archivo
+                    const deleteResponse = await fetch(
+                        `${supabaseUrl}/storage/v1/object/${bucketName}/${currentFile.name}`,
+                        {
+                            method: 'DELETE',
+                            headers: {
+                                'Authorization': `Bearer ${supabaseKey}`,
+                                'apikey': supabaseKey
+                            }
+                        }
+                    );
+                    
+                    if (!deleteResponse.ok) {
+                        throw new Error('Error al eliminar el archivo del almacenamiento');
+                    }
+                    
+                    previewModal.classList.add('hidden');
+                    
+                } else if (type === 'folder') {
+                    // Eliminar carpeta (y todo su contenido)
+                    const deleteResponse = await fetch(
+                        `${supabaseUrl}/storage/v1/object/${bucketName}/${currentFolder}`,
+                        {
+                            method: 'DELETE',
+                            headers: {
+                                'Authorization': `Bearer ${supabaseKey}`,
+                                'apikey': supabaseKey
+                            }
+                        }
+                    );
+                    
+                    if (!deleteResponse.ok) {
+                        throw new Error('Error al eliminar la carpeta del almacenamiento');
+                    }
+                }
+                
+                hideDeleteModal();
+                loadContent();
+                
+            } catch (error) {
+                console.error('Error deleting:', error);
+                alert('Error al eliminar: ' + error.message);
+            }
+        }
+        
+        // Función auxiliar para formatear el tamaño del archivo
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // Función auxiliar para formatear la fecha
+        function formatDate(dateString) {
+            if (!dateString) return 'Fecha desconocida';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+ 
