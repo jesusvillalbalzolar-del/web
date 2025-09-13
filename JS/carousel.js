@@ -1,3 +1,4 @@
+
 const imagesSrc = [
   {src: 'IMG/carrusel/1721399409669.jpg', alt: 'Imagen 1', desc: 'Vista panorámica del lugar'},
   {src: 'IMG/carrusel/1727101293107.jpg', alt: 'Imagen 2', desc: 'Detalle arquitectónico en primer plano'},
@@ -20,10 +21,8 @@ const imagesSrc = [
   {src: 'IMG/carrusel/20250425_115740.jpg', alt: 'Imagen 19', desc: 'Detalle final de la construcción'}
 ];
 
-const carouselContent = document.getElementById("carouselContent");
 
-// --- VELOCIDAD DE ANIMACIÓN (en segundos) ---
-carouselContent.style.animationDuration = '15s'; // <── más rápido (antes 30s o 40s)
+const carouselContent = document.getElementById("carouselContent");
 
 // Insertar imágenes en el carrusel y duplicarlas para efecto infinito
 for (let i = 0; i < 2; i++) {
@@ -81,4 +80,4 @@ carouselContent.addEventListener("touchmove", e => {
   const x = e.touches[0].pageX - carouselContent.offsetLeft;
   const walk = (x - startX) * 2;
   carouselContent.scrollLeft = scrollLeft - walk;
-});
+}); 
