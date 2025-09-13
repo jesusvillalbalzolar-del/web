@@ -1491,12 +1491,16 @@
       
         <div style="margin-top: 10%;">
           <img  src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/logo2.png"
-          alt="Logo Contraloría Estado Nueva Esparta" style="width: 25%; height: auto;" />
+          alt="Logo Contraloría Estado Nueva Esparta" style="width: 20%; height: auto;" />
         </div>
         <h1 class="hero-title">
           Contraloría del Estado Nueva Esparta
           <span class="hero-gradient-text">Vigilancia y Transparencia para el Pueblo Neoespartano</span>
         </h1>
+
+          <p class="hero-subtitle">
+          Órgano superior de control fiscal al servicio de la administración pública estadal de Nueva Esparta
+        </p>
 
         <!-- Hero Navigation Cards -->
         <nav class="hero-nav-cards" aria-label="Navegación principal">
@@ -1514,21 +1518,121 @@
           </button>
         </nav>
 
-        <p class="hero-subtitle">
-          Órgano superior de control fiscal al servicio de la administración pública estadal de Nueva Esparta
-        </p>
+      
       
 
-        <!-- Flechas animadas hacia abajo -->
-        <div style="margin-bottom: 60px;" class="scroll-down" onclick="scrollToSection('quienes-somos')" role="button" tabindex="0"
-          aria-label="Ir a Quiénes Somos">
-          <span class="arrow"></span>
-          <span class="arrow"></span>
-          <span class="arrow"></span>
-        </div>
+      
 
       </div>
     </div>
+
+
+    <style>
+  /* Mejoras responsivas para la sección Hero */
+  .hero-content img {
+    max-width: 25%;
+    height: auto;
+    transition: all 0.3s ease;
+  }
+
+  /* Ajustes para el título con nuevos colores */
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #FFD700; /* Amarillo para la primera parte */
+  }
+
+  .hero-title .hero-gradient-text {
+    background: linear-gradient(90deg, #4CAF50, #2196F3); /* Verde a Azul */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: block;
+  }
+
+  /* Mejoras para las flechas de scroll */
+  .scroll-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin: 20px auto;
+    width: 40px;
+    gap: 8px;
+    justify-content: center;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .scroll-down .arrow {
+    width: 20px;
+    height: 20px;
+    border-bottom: 4px solid white;
+    border-right: 4px solid white;
+    transform: rotate(45deg);
+    animation: bounce 1.5s infinite;
+    opacity: 0.75;
+  }
+
+  /* Responsividad para móviles */
+  @media (max-width: 768px) {
+    .hero-content img {
+      max-width: 60%;
+      margin-top: 5% !important;
+    }
+    
+    .hero-title {
+      font-size: 1.8rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+    
+    .scroll-down {
+      bottom: 20px;
+    }
+    
+    .scroll-down .arrow {
+      width: 15px;
+      height: 15px;
+      border-bottom: 3px solid white;
+      border-right: 3px solid white;
+    }
+    
+    .nav-card {
+      width: 100px;
+      height: 90px;
+    }
+    
+    .nav-card span {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-content img {
+      max-width: 70%;
+    }
+    
+    .hero-title {
+      font-size: 1.5rem;
+    }
+    
+    .nav-card {
+      width: 85px;
+      height: 80px;
+    }
+    
+    .nav-card-icon {
+      font-size: 1.2rem;
+    }
+  }
+</style>
   </section>
 
   <!-- Sección Quiénes Somos -->
