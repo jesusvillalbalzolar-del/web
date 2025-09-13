@@ -21,7 +21,8 @@ const imagesSrc = [
   {src: 'IMG/carrusel/20250425_115740.jpg', alt: 'Imagen 19', desc: 'Detalle final de la construcción'}
 ];
 
-
+// --- VELOCIDAD DE ANIMACIÓN (en segundos) ---
+carouselContent.style.animationDuration = '15s'; // <── más rápido (antes 30s o 40s)
 const carouselContent = document.getElementById("carouselContent");
 
 // Insertar imágenes en el carrusel y duplicarlas para efecto infinito
@@ -81,3 +82,4 @@ carouselContent.addEventListener("touchmove", e => {
   const walk = (x - startX) * 2;
   carouselContent.scrollLeft = scrollLeft - walk;
 }); 
+
