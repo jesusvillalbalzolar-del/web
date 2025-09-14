@@ -14,11 +14,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/link1.png"
-    type="image/png" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="CSS/variable.css" />
+  <link rel="stylesheet" href="CSS/layout.css" />
+  <link rel="stylesheet" href="CSS/componente.css" />
+  <link rel="stylesheet" href="CSS/footer.css" />
 
-  <style>
+ <style>
     :root {
       --primary: #2563eb;
       --primary-dark: #1d4ed8;
@@ -1447,9 +1449,14 @@
       }
     }
   </style>
+
+  <!-- Favicon (link.png) -->
+  <link rel="icon" href="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/link1.png"
+    type="image/png" />
 </head>
 
 <body>
+
 
   <!-- Botón hamburguesa -->
   <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false"
@@ -1464,7 +1471,6 @@
 
       <li>
         <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/logo2.png"
-        style="width: auto; height: auto; "
           alt="Logo Contraloría Estado Nueva Esparta" class="menu-logo" />
       </li>
 
@@ -1484,6 +1490,13 @@
       <li><a href="#accordion-section"><i class="fas fa-question-circle"></i> Preguntas Frecuentes</a></li>
     </ul>
   </nav>
+
+
+
+
+
+
+
 
   <!-- Hero Section -->
   <section  class="hero-section">
@@ -1640,7 +1653,7 @@
 </style>
   </section>
 
-  <!-- Sección Quiénes Somos -->
+ <!-- Sección Quiénes Somos -->
   <section id="quienes-somos" class="quienes-somos-section container">
     <h2 class="section-title animate-fadeInDown">¿Quiénes Somos?</h2>
     <p class="section-subtitle animate-fadeInDown">
@@ -2398,6 +2411,152 @@
     </div>
   </section>
 
+
+
+
+  <!-- Modal del Organigrama -->
+  <div id="organigramaModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="organigramaTitle"
+    tabindex="-1" aria-hidden="true">
+    <div class="modal-content" role="document">
+      <button class="modal-close" id="closeOrganigramaModal" aria-label="Cerrar modal">&times;</button>
+
+      <h3 id="organigramaTitle">Organigrama Institucional</h3>
+
+      <!-- Nivel 1 -->
+      <div class="nivel-organigrama">
+        <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/nivel1.png"
+          alt="Nivel 1 - Despacho">
+        <div class="overlay">DESPACHO: Máxima autoridad de la institución.</div>
+      </div>
+
+      <!-- Nivel 2 -->
+      <div class="nivel-organigrama">
+        <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/nivel2.png"
+          alt="Nivel 2">
+        <div class="overlay">Aquí se encuentra la Dirección General, Auditoría Interna y Atención Ciudadana.</div>
+      </div>
+
+      <!-- Nivel 3 -->
+      <div class="nivel-organigrama">
+        <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/nivel3.png"
+          alt="Nivel 3">
+        <div class="overlay">Direcciones operativas: Administración, Jurídicos, Técnica, Talento Humano, etc.</div>
+      </div>
+
+      <!-- Nivel 4 -->
+      <div class="nivel-organigrama">
+        <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/nivel4.png"
+          alt="Nivel 4">
+        <div class="overlay">Direcciones de control de la administración central, descentralizada y responsabilidades.
+        </div>
+      </div>
+
+
+      <button class="download-btn"
+        onclick="window.open('https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/organigrama.pdf', '_blank')">
+        Descargar Organigrama (PDF)
+      </button>
+    </div>
+  </div>
+
+
+  <!-- Modal Noticias -->
+  <div id="newsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="newsModalTitle" tabindex="-1">
+    <div class="modal-content" role="document">
+      <button id="closeNewsModal" aria-label="Cerrar noticias" class="modal-close">&times;</button>
+
+
+      <!-- Imagen de cabecera -->
+      <div style="text-align:center; margin-bottom:20px;">
+        <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/noticebne/noticias.png"
+          alt="Noticias CEBNE" style="
+          max-width:100%; 
+          height:auto; 
+          border-radius:12px; 
+          box-shadow:0 4px 12px rgba(0,0,0,0.2); 
+          transition:transform 0.3s ease;
+       " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+
+      <!-- FEBRERO -->
+      <div class="pdf-section" style="margin-bottom:25px;">
+        <h3>NotiCEBNE FEBRERO 2025</h3>
+        <iframe
+          src="./https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/noticebne/FEBRERO2025.pdf"
+          width="100%" height="500px" style="border:none;"></iframe>
+        <p style="text-align:center; margin-top:8px;">
+          <a href="./https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/noticebne/FEBRERO2025.pdf"
+            download target="_blank">📥 Descargar FEBRERO</a>
+        </p>
+      </div>
+
+      <!-- MARZO -->
+      <div class="pdf-section" style="margin-bottom:25px;">
+        <h3>NotiCEBNE MARZO 2025</h3>
+        <iframe src="./https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/noticebne/MARZO2025.pdf"
+          width="100%" height="500px" style="border:none;"></iframe>
+        <p style="text-align:center; margin-top:8px;">
+          <a href="./https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/noticebne/MARZO2025.pdf"
+            download target="_blank">📥 Descargar MARZO</a>
+        </p>
+      </div>
+
+      <!-- ABRIL -->
+      <div class="pdf-section" style="margin-bottom:25px;">
+        <h3>NotiCEBNE ABRIL 2025</h3>
+        <iframe src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/noticebne/ABRIL2025.pdf"
+          width="100%" height="500px" style="border:none;"></iframe>
+        <p style="text-align:center; margin-top:8px;">
+          <a href="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/noticebne/ABRIL2025.pdf"
+            download target="_blank">📥 Descargar ABRIL</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- Modal Leyes -->
+  <div id="lawsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="lawsModalTitle" tabindex="-1">
+    <div class="modal-content" role="document">
+      <button id="closeLawsModal" aria-label="Cerrar leyes" class="modal-close">&times;</button>
+
+
+
+      <!-- Imagen de cabecera -->
+      <div style="text-align:center; margin-bottom:20px;">
+        <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/Leyes/leyes.png"
+          alt="Leyes CEBNE" style="
+          max-width:100%; 
+          height:auto; 
+          border-radius:12px; 
+          box-shadow:0 4px 12px rgba(0,0,0,0.2); 
+          transition:transform 0.3s ease;
+       " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+
+      <div class="news-list">
+        <h3>Marco Legal</h3>
+        <input type="text" id="searchLaw" placeholder="🔎 Buscar ley..."
+          style="width:100%; padding:8px; margin-bottom:15px;">
+
+        <div id="lawsContainer"></div>
+      </div>
+
+      <div class="pdf-container">
+        <iframe id="pdfPreviewLaws" src="" width="100%" height="600px" style="border:none;"></iframe>
+      </div>
+
+      <div class="download-section">
+        <a id="downloadPdfLaws" class="download-btn" href="#" download target="_blank">
+          📥 Descargar PDF
+        </a>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Contacto -->
   <section id="contacto" class="contact-section">
     <div class="container">
@@ -2439,6 +2598,8 @@
     </div>
   </section>
 
+
+
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -2450,7 +2611,7 @@
         <p class="footer-text">Órgano Superior de Control Fiscal del Estado Nueva Esparta</p>
         <nav aria-label="Enlaces de pie de página">
           <div class="footer-links">
-            <a href="#beneficios">Beneficios</a>
+            <a href="#benefios">Beneficios</a>
             <a href="#quienes-somos">Quiénes Somos</a>
             <a href="#donde-estamos">Dónde Estamos</a>
             <a href="#contacto">Contacto</a>
@@ -2465,191 +2626,20 @@
     </div>
   </footer>
 
-  <script>
-    // Función para desplazarse suavemente a secciones
-    function scrollToSection(sectionId) {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        window.scrollTo({
-          top: section.offsetTop - 80,
-          behavior: "smooth",
-        });
-      }
-    }
-
-    // Animación al hacer scroll
-    function animateOnScroll() {
-      const elements = document.querySelectorAll(
-        ".animate-fadeInUp, .animate-fadeInDown, .animate-fadeIn, .animate-scaleIn"
-      );
-
-      elements.forEach((element) => {
-        const position = element.getBoundingClientRect();
-
-        if (position.top < window.innerHeight && position.bottom >= 0) {
-          element.style.opacity = 1;
-          element.style.visibility = "visible";
-          element.style.transform = "translateY(0)";
-        }
-      });
-    }
-
-    // Inicializar animaciones
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(
-        ".animate-fadeInUp, .animate-fadeInDown, .animate-fadeIn, .animate-scaleIn"
-      ).forEach((el) => {
-        el.style.opacity = 0;
-        el.style.visibility = "hidden";
-        if (el.classList.contains("animate-fadeInUp")) {
-          el.style.transform = "translateY(30px)";
-        }
-        if (el.classList.contains("animate-fadeInDown")) {
-          el.style.transform = "translateY(-30px)";
-        }
-        if (el.classList.contains("animate-scaleIn")) {
-          el.style.transform = "scale(0.8)";
-        }
-        el.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-      });
-
-      animateOnScroll();
-    });
-
-    window.addEventListener("scroll", animateOnScroll);
-
-    // Script para el menú
-    const menuToggle = document.getElementById("menu-toggle");
-    const sideMenu = document.getElementById("side-menu");
-    const body = document.body;
-
-    if (menuToggle && sideMenu) {
-      const openMenu = () => {
-        menuToggle.setAttribute("aria-expanded", "true");
-        sideMenu.classList.add("active");
-        menuToggle.classList.add("open");
-        body.classList.add("menu-open");
-      };
-
-      const closeMenu = () => {
-        menuToggle.setAttribute("aria-expanded", "false");
-        sideMenu.classList.remove("active");
-        menuToggle.classList.remove("open");
-        body.classList.remove("menu-open");
-      };
-
-      menuToggle.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const expanded = menuToggle.getAttribute("aria-expanded") === "true";
-        if (expanded) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
-
-      // Cerrar al hacer clic fuera del menú y botón
-      document.addEventListener("click", (e) => {
-        const isClickInside =
-          sideMenu.contains(e.target) || menuToggle.contains(e.target);
-        if (!isClickInside && sideMenu.classList.contains("active")) {
-          closeMenu();
-        }
-      });
-
-      // Cerrar al hacer clic en cualquier enlace del menú
-      sideMenu.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          closeMenu();
-        });
-      });
-    }
-
-    // Script para el acordeón
-    document.querySelectorAll('.accordion-header').forEach(header => {
-      header.addEventListener('click', () => {
-        const content = header.nextElementSibling;
-        const isOpen = content.classList.contains('open');
-
-        // Cerrar otros acordeones
-        document.querySelectorAll('.accordion-content').forEach(item => {
-          if (item !== content) {
-            item.classList.remove('open');
-            item.style.maxHeight = null;
-          }
-        });
-
-        // Alternar el acordeón actual
-        if (!isOpen) {
-          content.classList.add('open');
-          content.style.maxHeight = content.scrollHeight + "px";
-        } else {
-          content.classList.remove('open');
-          content.style.maxHeight = null;
-        }
-      });
-    });
-
-    // Script para el carrusel
-    
+  <!-- JS-->
+  <script src="JS/scroll.js" defer></script>
+  <script src="JS/contact-form.js" defer></script>
+  <script src="JS/carousel.js" defer></script>
+  <script src="JS/info.js" defer></script>
+  <script src="JS/calendario.js" defer></script>
+  <script src="JS/menu.js" defer></script>
+  <script src="JS/modal.js" defer></script>
+  <script src="JS/acordeon.js" defer></script>
+  <script src="JS/sliderImagenes.js" defer></script>
+  <script src="JS/buscador.js" defer></script>
 
 
-    // Insertar imágenes en el carrusel y duplicarlas para efecto infinito
-    for (let i = 0; i < 2; i++) {
-      imagesSrc.forEach(imgData => {
-        const figure = document.createElement("figure");
-        const img = document.createElement("img");
-        const caption = document.createElement("figcaption");
 
-        img.src = imgData.src;
-        img.alt = imgData.alt;
-        caption.textContent = imgData.desc;
-
-        figure.appendChild(img);
-        figure.appendChild(caption);
-        carouselContent.appendChild(figure);
-      });
-    }
-
-     
-    
-
-    carouselContent.addEventListener("mousedown", e => {
-      isDown = true;
-      carouselContent.style.animationPlayState = "paused";
-      startX = e.pageX - carouselContent.offsetLeft;
-      scrollLeft = carouselContent.scrollLeft;
-    });
-    carouselContent.addEventListener("mouseleave", () => { isDown = false; });
-    carouselContent.addEventListener("mouseup", () => {
-      isDown = false;
-      carouselContent.style.animationPlayState = "running";
-    });
-    carouselContent.addEventListener("mousemove", e => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - carouselContent.offsetLeft;
-      const walk = (x - startX) * 2;
-      carouselContent.scrollLeft = scrollLeft - walk;
-    });
-
-    carouselContent.addEventListener("touchstart", e => {
-      isDown = true;
-      carouselContent.style.animationPlayState = "paused";
-      startX = e.touches[0].pageX - carouselContent.offsetLeft;
-      scrollLeft = carouselContent.scrollLeft;
-    });
-    carouselContent.addEventListener("touchend", () => {
-      isDown = false;
-      carouselContent.style.animationPlayState = "running";
-    });
-    carouselContent.addEventListener("touchmove", e => {
-      if (!isDown) return;
-      const x = e.touches[0].pageX - carouselContent.offsetLeft;
-      const walk = (x - startX) * 2;
-      carouselContent.scrollLeft = scrollLeft - walk;
-    });
-  </script>
 </body>
 
-</html> 
+</html>
