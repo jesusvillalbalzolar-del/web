@@ -1502,9 +1502,9 @@
           Órgano superior de control fiscal al servicio de la administración pública estadal de Nueva Esparta
         </p>
 
-          <a class="hero-button animate-scaleIn" href="#quienes-somos" onclick="scrollToSection('quienes-somos')">
-          Conócenos
-        </a>
+          <a class="hero-button animate-scaleIn" href="#video-institucional" onclick="scrollToSection('quienes-somos')">
+             Conócenos
+          </a>
 
         <!-- Hero Navigation Cards -->
         <nav style="margin-bottom: 10%;" class="hero-nav-cards" aria-label="Navegación principal">
@@ -1759,36 +1759,393 @@
   </section>
 
   <!-- Sección Carrusel - Nuestra Institución -->
-  <section id="carousel-section" aria-label="Carrusel de imágenes institucional con descripciones"
-    class="diagonal-section">
-    <h2 class="carousel-title" tabindex="0">Nuestra Institución</h2>
+   <div>
+    <!-- Sección Carrusel - Nuestra Institución -->
+    <section id="carousel-section" aria-label="Carrusel de imágenes institucional con descripciones" class="diagonal-section">
+      <h2 class="carousel-title" tabindex="0">Nuestra Institución</h2>
 
-    <div class="carousel-marquee">
-      <div class="carousel-content" id="carouselContent">
-        <!-- Imágenes se insertan dinámicamente -->
-        <figure>
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1721399409669.jpg"
-            alt="Imagen institucional">
-          <figcaption>Vista panorámica del lugar</figcaption>
-        </figure>
-        <figure>
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1727101293107.jpg"
-            alt="Imagen institucional">
-          <figcaption>Detalle arquitectónico</figcaption>
-        </figure>
-        <figure>
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1727101540455.jpg"
-            alt="Imagen institucional">
-          <figcaption>Perspectiva lateral</figcaption>
-        </figure>
-        <figure>
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1727101292917.jpg"
-            alt="Imagen institucional">
-          <figcaption>Registro frontal</figcaption>
-        </figure>
+      <div class="carousel-marquee">
+        <!-- Flechas de navegación -->
+        <div class="carousel-nav">
+          <div class="carousel-arrow left" id="prevArrow" aria-label="Imagen anterior">
+            <i class="fas fa-chevron-left"></i>
+          </div>
+          <div class="carousel-arrow right" id="nextArrow" aria-label="Imagen siguiente">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        </div>
+        
+        <div class="carousel-content" id="carouselContent">
+          <!-- Imágenes se insertan dinámicamente -->
+        </div>
       </div>
-    </div>
-  </section>
+      
+      <!-- Contenedor de puntos de navegación -->
+      <div class="carousel-pagination" id="carouselPagination"></div>
+    </section>
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+
+    /* Diagonal section style */
+    .diagonal-section {
+      position: relative;
+      isolation: isolate;
+      padding: 4rem 0;
+    }
+
+    .diagonal-section::after {
+      content: '';
+       position: absolute;
+      z-index: -1;
+      inset: 0;
+      transform: skewY(-3deg);
+    }
+
+    /* Carrusel styles */
+    #carousel-section {
+      color: white;
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .carousel-title {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-marquee {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+
+    .carousel-content {
+      display: flex;
+      gap: 40px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none; /* Firefox */
+      padding: 20px 0;
+    }
+
+    .carousel-content::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Edge */
+    }
+
+    .carousel-content figure {
+      flex: 0 0 auto;
+      width: 350px;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .carousel-content figure:hover {
+      transform: translateY(-5px);
+    }
+
+    .carousel-content img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-content figcaption {
+      padding: 15px;
+      color: #333;
+      font-weight: 500;
+      background: white;
+      text-align: center;
+    }
+
+    /* Pagination dots */
+    .carousel-pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .carousel-dot:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+      transform: scale(1.2);
+    }
+
+    .carousel-dot.active {
+      background-color: #fff;
+      transform: scale(1.2);
+    }
+
+    /* Navigation arrows */
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .carousel-arrow {
+      width: 50px;
+      height: 50px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      pointer-events: auto;
+      color: white;
+      font-size: 24px;
+    }
+
+    .carousel-arrow:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+      transform: scale(1.1);
+    }
+
+    .carousel-arrow.left {
+      margin-left: 15px;
+    }
+
+    .carousel-arrow.right {
+      margin-right: 15px;
+    }
+
+    /* Hide arrows on mobile */
+    @media (max-width: 768px) {
+      .carousel-nav {
+        display: none;
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .carousel-content figure {
+        width: 300px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .carousel-title {
+        font-size: 2rem;
+      }
+      
+      .carousel-content figure {
+        width: 250px;
+      }
+    }
+  </style>
+
+     <script>
+    // Script para el carrusel
+    const imagesSrc = [
+      {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1721399409669.jpg', alt: 'Imagen 1', desc: 'Vista panorámica del lugar'},
+      {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1727101293107.jpg', alt: 'Imagen 2', desc: 'Detalle arquitectónico en primer plano'},
+      {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1727101540455.jpg', alt: 'Imagen 3', desc: 'Perspectiva lateral de la estructura'},
+      {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1727101292917.jpg', alt: 'Imagen 4', desc: 'Registro frontal del entorno'}
+    ];
+
+    const carouselContent = document.getElementById("carouselContent");
+    const carouselPagination = document.getElementById("carouselPagination");
+    const prevArrow = document.getElementById("prevArrow");
+    const nextArrow = document.getElementById("nextArrow");
+    let currentSlide = 0;
+    let autoScrollInterval;
+    let isManualScroll = false;
+
+    // Crear puntos de paginación
+    function createPaginationDots() {
+      for (let i = 0; i < imagesSrc.length; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('carousel-dot');
+        if (i === 0) dot.classList.add('active');
+        dot.setAttribute('data-index', i);
+        dot.addEventListener('click', () => goToSlide(i));
+        carouselPagination.appendChild(dot);
+      }
+    }
+
+    // Ir a slide específico
+    function goToSlide(slideIndex) {
+      isManualScroll = true;
+      
+      // Pausar animación automática temporalmente
+      carouselContent.style.animationPlayState = "paused";
+      clearInterval(autoScrollInterval);
+      
+      currentSlide = slideIndex;
+      const slideWidth = carouselContent.children[0].offsetWidth + 40; // width + gap
+      carouselContent.scrollLeft = slideIndex * slideWidth;
+      
+      // Actualizar punto activo
+      updateActiveDot();
+      
+      // Reanudar animación automática después de un tiempo
+      setTimeout(() => {
+        isManualScroll = false;
+        carouselContent.style.animationPlayState = "running";
+        startAutoScroll();
+      }, 3000);
+    }
+
+    // Navegar al slide anterior
+    function prevSlide() {
+      let newSlide = currentSlide - 1;
+      if (newSlide < 0) newSlide = imagesSrc.length - 1;
+      goToSlide(newSlide);
+    }
+
+    // Navegar al slide siguiente
+    function nextSlide() {
+      let newSlide = currentSlide + 1;
+      if (newSlide >= imagesSrc.length) newSlide = 0;
+      goToSlide(newSlide);
+    }
+
+    // Iniciar scroll automático
+    function startAutoScroll() {
+      clearInterval(autoScrollInterval);
+      autoScrollInterval = setInterval(() => {
+        if (!isManualScroll) {
+          nextSlide();
+        }
+      }, 5000); // Cambiar slide cada 5 segundos
+    }
+
+    // Actualizar punto activo basado en la posición de desplazamiento
+    function updateActiveDot() {
+      const scrollPosition = carouselContent.scrollLeft;
+      const slideWidth = carouselContent.children[0].offsetWidth + 40; // width + gap
+      const activeIndex = Math.round(scrollPosition / slideWidth) % imagesSrc.length;
+      
+      document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+        if (index === activeIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+      
+      currentSlide = activeIndex;
+    }
+
+    // Insertar imágenes en el carrusel y duplicarlas para efecto infinito
+    for (let i = 0; i < 2; i++) {
+      imagesSrc.forEach(imgData => {
+        const figure = document.createElement("figure");
+        const img = document.createElement("img");
+        const caption = document.createElement("figcaption");
+
+        img.src = imgData.src;
+        img.alt = imgData.alt;
+        caption.textContent = imgData.desc;
+
+        figure.appendChild(img);
+        figure.appendChild(caption);
+        carouselContent.appendChild(figure);
+      });
+    }
+
+    // Inicializar paginación y auto scroll
+    createPaginationDots();
+    startAutoScroll();
+
+    // Agregar event listeners para las flechas
+    prevArrow.addEventListener("click", prevSlide);
+    nextArrow.addEventListener("click", nextSlide);
+
+    // --- Drag / Touch ---
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    carouselContent.addEventListener("mousedown", e => {
+      isDown = true;
+      carouselContent.style.animationPlayState = "paused";
+      startX = e.pageX - carouselContent.offsetLeft;
+      scrollLeft = carouselContent.scrollLeft;
+    });
+    
+    carouselContent.addEventListener("mouseleave", () => { 
+      isDown = false; 
+      if (!isManualScroll) {
+        carouselContent.style.animationPlayState = "running";
+      }
+    });
+    
+    carouselContent.addEventListener("mouseup", () => {
+      isDown = false;
+      updateActiveDot();
+      if (!isManualScroll) {
+        carouselContent.style.animationPlayState = "running";
+      }
+    });
+    
+    carouselContent.addEventListener("mousemove", e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carouselContent.offsetLeft;
+      const walk = (x - startX) * 2;
+      carouselContent.scrollLeft = scrollLeft - walk;
+    });
+
+    carouselContent.addEventListener("touchstart", e => {
+      isDown = true;
+      carouselContent.style.animationPlayState = "paused";
+      startX = e.touches[0].pageX - carouselContent.offsetLeft;
+      scrollLeft = carouselContent.scrollLeft;
+    });
+    
+    carouselContent.addEventListener("touchend", () => {
+      isDown = false;
+      updateActiveDot();
+      if (!isManualScroll) {
+        carouselContent.style.animationPlayState = "running";
+      }
+    });
+    
+    carouselContent.addEventListener("touchmove", e => {
+      if (!isDown) return;
+      const x = e.touches[0].pageX - carouselContent.offsetLeft;
+      const walk = (x - startX) * 2;
+      carouselContent.scrollLeft = scrollLeft - walk;
+    });
+
+    // Actualizar punto activo al hacer scroll
+    carouselContent.addEventListener("scroll", updateActiveDot);
+  </script>
+  </div>
 
   <!-- Sección Instagram -->
   <section id="instagram" class="instagram-section">
