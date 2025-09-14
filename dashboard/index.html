@@ -1,2642 +1,742 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contraloría Estado Nueva Esparta | Transparencia y Control Fiscal</title>
-  <meta name="keywords" content="contraloría, estado nueva esparta, control fiscal, transparencia, gestión pública" />
-  <meta name="description"
-    content="Sitio oficial de la Contraloría del Estado Nueva Esparta. Promoviendo la vigilancia y transparencia en la administración pública estadal." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-
-  <!-- CSS -->
- 
-
- <style>
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --secondary: #10b981;
-      --accent: #7c3aed;
-      --orange: #f97316;
-      --dark: #1f2937;
-      --light: #f9fafb;
-      --gray: #6b7280;
-      --gray-light: #e5e7eb;
-      --primary-blue: #007bff;
-      --dark-bg: #0f172a;
-      --card-bg: #1e293b;
-      --text-color-light: #cbd5e1;
-      --text-color-dark: #f1f5f9;
-      --border-radius-card: 12px;
-      --box-shadow-card: 0 4px 12px rgba(0, 0, 0, 0.25);
-      --btn-bg: #3b82f6;
-      --btn-bg-hover: #2563eb;
-      --btn-text-color: #fff;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-      background-color: #f8fafc;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    section {
-      padding: 80px 0;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 15px;
-      color: var(--dark);
-    }
-
-    .section-subtitle {
-      font-size: 1.2rem;
-      text-align: center;
-      margin-bottom: 50px;
-      color: var(--gray);
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Hero Section */
-    .hero-section {
-      position: relative;
-      height: 100vh;
-      min-height: 700px;
-      background:
-        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url('https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/hero2.jpg');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      display: flex;
-      align-items: center;
-      color: white;
-      overflow: hidden;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-      text-align: center;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .hero-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-gradient-text {
-      background: linear-gradient(90deg, #3b82f6, #10b981);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      display: block;
-    }
-
-    .hero-subtitle {
-      font-size: 1.2rem;
-      font-weight: 300;
-      margin-bottom: 2rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-button {
-      display: inline-block;
-      background: var(--primary);
-      color: white;
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 14px 30px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero-button:hover {
-      background: transparent;
-      border-color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Hero Navigation Cards */
-    .hero-nav-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin: 30px 0;
-    }
-
-    .nav-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 140px;
-      height: 120px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      padding: 10px;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .nav-card:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .nav-card-icon {
-      font-size: 1.8rem;
-      margin-bottom: 8px;
-      color: white;
-    }
-
-    .nav-card span {
-      font-weight: 500;
-      font-size: 0.85rem;
-    }
-
-    .scroll-down {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      margin-top: 2%;
-      margin-left: 48%;
-      width: 40px;
-      gap: 8px;
-      justify-content: center;
-    }
-
-    .scroll-down .arrow {
-      width: 30px;
-      height: 30px;
-      border-bottom: 8px solid white;
-      border-right: 8px solid white;
-      transform: rotate(45deg);
-      animation: bounce 1.5s infinite;
-      opacity: 0.75;
-    }
-
-    .scroll-down .arrow:nth-child(2) {
-      animation-delay: 0.3s;
-    }
-
-    .scroll-down .arrow:nth-child(3) {
-      animation-delay: 0.6s;
-    }
-
-    @keyframes bounce {
-
-      0%,
-      20%,
-      50%,
-      80%,
-      100% {
-        transform: rotate(45deg) translateY(0);
-        opacity: 0.75;
-      }
-
-      40% {
-        transform: rotate(45deg) translateY(8px);
-        opacity: 1;
-      }
-
-      60% {
-        transform: rotate(45deg) translateY(4px);
-        opacity: 0.9;
-      }
-    }
-
-    /* Quiénes Somos Section */
-    .quienes-somos-section {
-      padding: 50px 20px;
-      max-width: 900px;
-      margin: 40px auto;
-      text-align: center;
-      background-color: #f7f9fc;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .quienes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-      justify-items: center;
-    }
-
-    .flip-card {
-      background-color: transparent;
-      width: 260px;
-      height: 320px;
-      perspective: 1000px;
-      animation: fadeInUp 0.6s ease forwards;
-    }
-
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
-      cursor: pointer;
-    }
-
-    .flip-card:hover .flip-card-inner,
-    .flip-card:focus-within .flip-card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .flip-card-front,
-    .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 25px 20px;
-      box-sizing: border-box;
-    }
-
-    .flip-card-front {
-      background-color: #fff;
-      color: #333;
-      box-shadow: inset 0 0 0 1px #ddd;
-    }
-
-    .flip-card-back {
-      background-color: #f0f4f8;
-      color: #2c3e50;
-      transform: rotateY(180deg);
-      box-shadow: inset 0 0 0 1px #bbb;
-    }
-
-    .card-icon {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 15px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-    }
-
-    .bg-blue-100 {
-      background-color: #d0e7ff;
-    }
-
-    .border-blue-200 {
-      border: 2px solid #90baff;
-    }
-
-    .text-blue-600 {
-      color: #2a62d1;
-    }
-
-    .bg-green-100 {
-      background-color: #d4f4dd;
-    }
-
-    .border-green-200 {
-      border: 2px solid #7cd58e;
-    }
-
-    .text-green-600 {
-      color: #2f8f4f;
-    }
-
-    .bg-purple-100 {
-      background-color: #e6d8f7;
-    }
-
-    .border-purple-200 {
-      border: 2px solid #b89bf1;
-    }
-
-    .text-purple-600 {
-      color: #6c4dc3;
-    }
-
-    .card-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .card-description {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 15px;
-    }
-
-    .card-details {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      text-align: left;
-    }
-
-    .card-details li {
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-    }
-
-    .card-details span {
-      margin-right: 8px;
-      font-weight: 700;
-    }
-
-    /* Animations */
-    @keyframes fadeInDown {
-      0% {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .animate-fadeInDown {
-      animation-fill-mode: both;
-      animation-duration: 0.6s;
-      animation-timing-function: ease;
-    }
-
-    .animate-fadeInUp {
-      animation-fill-mode: both;
-      animation-duration: 0.6s;
-      animation-timing-function: ease;
-    }
-
-    /* Dónde Estamos Section */
-    #donde-estamos {
-      position: relative;
-      padding: 80px 20px;
-      background: #0f172a;
-      color: white;
-      clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      text-align: center;
-    }
-
-    #donde-estamos h2 {
-      font-size: 2.4rem;
-      font-weight: bold;
-      color: #ffffff;
-      display: inline-block;
-      border-bottom: 4px solid #0059b3;
-      margin-bottom: 20px;
-      padding-bottom: 8px;
-    }
-
-    #donde-estamos p {
-      font-size: 1.1rem;
-      text-align: center;
-      margin-bottom: 30px;
-      color: #e2e8f0;
-    }
-
-    #donde-estamos iframe {
-      display: block;
-      width: 70%;
-      height: 300px;
-      border: 0;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      margin: 0 auto 25px auto;
-    }
-
-    .btn-map-link {
-      display: block;
-      width: fit-content;
-      margin: 0 auto;
-      background-color: #2563eb;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-map-link:hover {
-      background-color: #1d4ed8;
-    }
-
-    /* Sección de Enfoque */
-    .section-focus {
-      padding: 80px 20px;
-      position: relative;
-      overflow: hidden;
-      background: #f8f9fa;
-      z-index: 1;
-    }
-
-    .section-focus .hero-text h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      color: #0f172a;
-      margin-bottom: 10px;
-    }
-
-    .section-focus .hero-text p {
-      text-align: center;
-      font-size: 1.1rem;
-      color: #333;
-      margin-bottom: 40px;
-      max-width: 800px;
-      margin-inline: auto;
-    }
-
-    .section-focus .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-focus .feature-card {
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .section-focus .feature-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .section-focus .feature-card h3 {
-      margin-top: 15px;
-      color: #0f172a;
-      font-size: 1.3rem;
-    }
-
-    .section-focus .feature-card p {
-      font-size: 0.95rem;
-      color: #555;
-      margin-top: 10px;
-    }
-
-    .section-focus .icon-wrapper {
-      font-size: 2.5rem;
-      background-color: #0f172a;
-      color: white;
-      width: 60px;
-      height: 60px;
-      margin: 0 auto;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .section-focus .icon-audit::before {
-      content: '📋';
-    }
-
-    .section-focus .icon-transparency::before {
-      content: '🔍';
-    }
-
-    .section-focus .icon-prevention::before {
-      content: '🚫';
-    }
-
-    .section-focus .icon-control::before {
-      content: '💼';
-    }
-
-    /* Benefits Section */
-    .benefits-section {
-      background-color: var(--light);
-      margin-bottom: 10%;
-    }
-
-    .benefits-title {
-      text-align: center;
-      font-size: 2.5rem;
-      color: #0f172a;
-      margin-bottom: 10px;
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* Top Dark Section */
-    .top-dark-section {
-      background-color: #0f172a;
-      color: white !important;
-      text-align: center !important;
-      padding: 40px 20px  !important;
-      position: relative !important;
-      overflow: hidden !important;
-    }
-
-    .top-dark-section p {
-      margin: 5px 0;
-      position: relative;
-      z-index: 2;
-    }
-
-    .top-dark-section .phone-number-label {
-      font-size: 1.2em;
-      font-weight: bold;
-      margin-top: 20px;
-    }
-
-    .top-dark-section .phone-number {
-      font-size: 1.8em;
-      font-weight: bold;
-      display: block;
-      direction: ltr;
-      unicode-bidi: plaintext;
-      word-break: break-all;
-    }
-
-    .content-section {
-      background-color: white;
-      padding: 40px 20px;
-      text-align: center;
-      position: relative;
-      z-index: 0;
-    }
-
-    h2 {
-      color: #333;
-      font-size: 1.8em;
-      margin-bottom: 30px;
-    }
-
-    .logos-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin-bottom: 50px;
-    }
-
-    .link-logo {
-      max-height: 120px;
-      width: 220px;
-      height: auto;
-      transition: transform 0.3s;
-    }
-
-    .link-logo:hover {
-      transform: scale(1.1);
-    }
-
-    .links-section {
-      margin-top: 3px;
-      margin-bottom: 100px;
-      text-align: center;
-    }
-
-    .swiper {
-      padding: 20px 0;
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: #007bff;
-    }
-
-    /* Diagonal Section */
-    .diagonal-section {
-      width: 100%;
-      position: relative;
-      background: #0f172a;
-      clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
-      padding: 100px 0;
-    }
-
-    #carousel-section {
-      text-align: center;
-    }
-
-    .carousel-title {
-      font-size: 2.4rem;
-      font-weight: bold;
-      color: #ffffff;
-      display: inline-block;
-      border-bottom: 4px solid #0059b3;
-      margin: 0 auto 20px auto;
-      padding-bottom: 8px;
-      text-align: center;
-    }
-
-    .carousel-marquee {
-      overflow: hidden;
-      width: 100%;
-      position: relative;
-      padding: 25px 0;
-      box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.25);
-      cursor: grab;
-    }
-
-    .carousel-marquee:active {
-      cursor: grabbing;
-    }
-
-    .carousel-content {
-      display: flex;
-      gap: 40px;
-      animation: scrollCarousel 100s linear infinite;
-      will-change: transform;
-      padding: 10px;
-    }
-
-    .carousel-content figure {
-      flex: 0 0 auto;
-      text-align: center;
-      margin: 0;
-      width: 260px;
-    }
-
-    .carousel-content img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .carousel-content img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
-    }
-
-    .carousel-content figcaption {
-      font-size: 1rem;
-      color: #fff;
-      margin-top: 10px;
-      max-width: 260px;
-      line-height: 1.4;
-      font-weight: 500;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 6px 10px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    @keyframes scrollCarousel {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    .carousel-marquee:hover .carousel-content {
-      animation-play-state: paused;
-    }
-
-    /* Contact Section */
-    .contact-section {
-      background-color: #252e44;
-      padding: 60px 20px;
-      color: #cbd5e1;
-      text-align: center;
-    }
-
-    .contact-section h2 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
-      color: var(--text-color-dark);
-      position: relative;
-      display: inline-block;
-      font-weight: 700;
-    }
-
-    .contact-section h2::after {
-      content: '';
-      display: block;
-      width: 70px;
-      height: 4px;
-      background-color: var(--primary-blue);
-      margin: 10px auto 0;
-      borderRadius: 3px;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-      align-items: start;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .info-cards-column {
-      display: flex;
-      gap: 25px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .contact-card {
-      background-color: var(--card-bg);
-      border-radius: var(--border-radius-card);
-      padding: 30px 25px;
-      box-shadow: var(--box-shadow-card);
-      color: var(--text-color-light);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-      cursor: default;
-      flex: 1 1 280px;
-      border: 2px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .contact-card:hover {
-      border-color: rgba(59, 130, 246, 0.8);
-      transform: translateY(-6px);
-      box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
-    }
-
-    .icon-circle {
-      width: 70px;
-      height: 70px;
-      background-color: #3b82f6;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    .icon-circle i {
-      font-size: 2.4rem;
-      color: white;
-    }
-
-    .contact-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-      color: var(--primary-blue);
-      font-weight: 700;
-    }
-
-    .contact-card p {
-      font-size: 1rem;
-      color: var(--text-color-light);
-      margin: 5px 0;
-      line-height: 1.4;
-    }
-
-    .contact-card a.btn-map {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 22px;
-      background-color: var(--btn-bg);
-      color: var(--btn-text-color);
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 6px;
-      box-shadow: 0 4px 10px rgba(59, 130, 246, 0.5);
-      transition: background-color 0.3s ease;
-    }
-
-    .contact-card a.btn-map:hover,
-    .contact-card a.btn-map:focus {
-      background-color: var(--btn-bg-hover);
-      outline: none;
-    }
-
-    .contact-hours {
-      max-width: 450px;
-      margin: 40px auto 0;
-      padding: 18px 25px;
-      background-color: var(--gray);
-      color: white;
-      font-weight: 600;
-      font-size: 1.2rem;
-      border-radius: 10px;
-      box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5);
-      text-align: center;
-      user-select: none;
-      letter-spacing: 0.02em;
-    }
-
-    .btn-call,
-    .btn-whatsapp {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 8px 18px;
-      border-radius: 6px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-      cursor: pointer;
-      user-select: none;
-      font-size: 0.95rem;
-    }
-
-    .btn-whatsapp {
-      background-color: #25d366;
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-whatsapp i {
-      font-size: 1.2rem;
-    }
-
-    .btn-whatsapp:hover,
-    .btn-whatsapp:focus {
-      background-color: #1da851;
-      outline: none;
-    }
-
-    /* Menu Toggle */
-    .menu-toggle {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      background: #004080;
-      color: white;
-      border: none;
-      padding: 10px 14px;
-      border-radius: 4px;
-      font-size: 18px;
-      cursor: pointer;
-      z-index: 1101;
-      transition: background-color 0.3s ease;
-    }
-
-    .menu-toggle:hover,
-    .menu-toggle:focus {
-      background-color: #003366;
-      outline: none;
-    }
-
-    .menu-toggle.open i.fas.fa-bars {
-      display: none;
-    }
-
-    .menu-toggle.open i.fas.fa-xmark {
-      display: inline-block;
-    }
-
-    .menu-toggle i.fas.fa-xmark {
-      display: none;
-    }
-
-    /* Side Menu */
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 260px;
-      height: 100vh;
-      background-color: #004080;
-      padding-top: 60px;
-      box-shadow: 2px 0 12px rgba(0, 0, 0, 0.25);
-      overflow-y: auto;
-      z-index: 1100;
-      transform: translateX(-100%);
-      visibility: hidden;
-      opacity: 0;
-      transition: transform 0.3s ease, visibility 0.3s, opacity 0.3s;
-    }
-
-    .side-menu.active {
-      transform: translateX(0);
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .side-menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .side-menu li {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .side-menu a {
-      display: flex;
-      align-items: center;
-      padding: 12px 24px;
-      color: white;
-      font-weight: 600;
-      text-decoration: none;
-      border-left: 4px solid transparent;
-      transition: background-color 0.3s, border-color 0.3s;
-    }
-
-    .side-menu a:hover,
-    .side-menu a:focus {
-      background-color: rgba(255, 255, 255, 0.2);
-      border-left-color: #ffd54f;
-      outline: none;
-    }
-
-    .side-menu a i {
-      margin-right: 12px;
-      min-width: 18px;
-      text-align: center;
-      font-size: 18px;
-    }
-
-    body.menu-open {
-      overflow: hidden;
-    }
-
-    /* Marquee Section */
-    .marquee-section {
-      padding: 40px 0 70px;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-
-    .marquee-section h2 {
-      font-size: 2.8rem;
-      font-weight: bold;
-      color: #003366;
-      margin-bottom: 5%;
-      border-bottom: 4px solid #0059b3;
-      display: inline-block;
-      padding-bottom: 10px;
-    }
-
-    .marquee {
-      overflow: hidden;
-      width: 100%;
-      position: relative;
-    }
-
-    .marquee-content {
-      display: flex;
-      animation: scroll-left 30s linear infinite;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .marquee-content a {
-      flex: 0 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .marquee-content img {
-      height: 75px;
-      max-width: 130px;
-      transition: transform 0.3s ease;
-      filter: grayscale(0.1);
-    }
-
-    .marquee-content a:hover img {
-      transform: scale(1.1);
-      filter: grayscale(0);
-    }
-
-    @keyframes scroll-left {
-      0% {
-        transform: translateX(0%);
-      }
-
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    /* Accordion Section - CENTRO DE AYUDA */
-    .accordion-section {
-      max-width: 1100px;
-      margin: 0 auto 80px;
-      padding: 30px;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-
-    .accordion-section h2 {
-      font-size: 2.8rem;
-      font-weight: bold;
-      color: #003366;
-      margin: 0 auto 5%;
-      border-bottom: 4px solid #0059b3;
-      display: inline-block;
-      padding-bottom: 10px;
-      text-align: center;
-      width: 100%;
-    }
-
-    .accordion {
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      width: 100%;
-    }
-
-    .accordion-item {
-      border-bottom: 1px solid #ccc;
-    }
-
-    .accordion-header {
-      width: 100%;
-      background-color: #002f5e;
-      color: white;
-      text-align: left;
-      padding: 18px 24px;
-      font-size: 1.2em;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      outline: none;
-      transition: background 0.3s ease;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .accordion-header:hover {
-      background-color: #001a33;
-    }
-
-    .accordion-content {
-      background: #f2f5fa;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .accordion-content-inner {
-      padding: 20px;
-      text-align: left;
-    }
-
-    .accordion-content.open {
-      max-height: 300px;
-      overflow-y: auto;
-    }
-
-    .accordion-content p {
-      margin-bottom: 18px;
-      line-height: 1.6;
-      font-size: 1.05em;
-      color: #003366;
-    }
-
-    .ir-btn {
-      display: inline-flex;
-      align-items: center;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #2ecc71;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: all 0.3s;
-      font-weight: 500;
-    }
-
-    .ir-btn:hover {
-      background-color: #27ae60;
-      transform: translateY(-2px);
-    }
-
-    .ir-btn i {
-      margin-left: 8px;
-      font-size: 14px;
-    }
-
-    /* Footer */
-    footer {
-      background: #0f172a;
-      color: white;
-      padding: 40px 0 20px;
-      text-align: center;
-    }
-
-    .footer-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .footer-logo img {
-      width: 300px;
-      height: auto;
-    }
-
-    .footer-text {
-      font-size: 1rem;
-      color: #cbd5e1;
-      margin-bottom: 25px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .footer-links a {
-      color: #94a3b8;
-      text-decoration: none;
-      transition: color 0.3s;
-      font-size: 0.95rem;
-    }
-
-    .footer-links a:hover {
-      color: var(--primary);
-    }
-
-    .copyright {
-      font-size: 0.85rem;
-      color: #64748b;
-      padding-top: 15px;
-      border-top: 1px solid #1e293b;
-    }
-
-    /* Instagram Section */
-    .instagram-section {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #f0f4f8, #ffffff);
-      border-radius: 20px;
-      margin: 0 0 70px 0;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Video Section */
-    #video-institucional {
-      padding: 60px 20px;
-      background: linear-gradient(180deg, #f5f5f5, #e0e0e0);
-    }
-
-    /* Responsive Styles */
-    @media (max-width: 992px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .map-card {
-        min-height: 350px;
-      }
-
-      .contact-hours {
-        max-width: 90%;
-        font-size: 1.1rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .hero-title {
-        font-size: 2rem;
-      }
-
-      .hero-section {
-        min-height: 600px;
-      }
-
-      .nav-card {
-        width: 120px;
-        height: 100px;
-      }
-
-      .nav-card-icon {
-        font-size: 1.5rem;
-      }
-
-      .scroll-down {
-        margin-left: 45%;
-      }
-
-      #donde-estamos iframe {
-        width: 90%;
-        height: 250px;
-      }
-
-      .carousel-content figure {
-        width: 220px;
-      }
-
-      .carousel-content img {
-        height: 150px;
-      }
-
-      .marquee-content img {
-        height: 60px;
-        max-width: 110px;
-      }
-
-      .accordion-section h2 {
-        font-size: 2.2rem;
-      }
-
-      .top-dark-section .phone-number {
-        font-size: 1.5rem;
-      }
-
-      .footer-logo img {
-        width: 200px;
-      }
-
-      .accordion-header {
-        padding: 15px;
-        font-size: 1.1rem;
-      }
-
-      .accordion-content-inner {
-        padding: 15px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .section-title {
-        font-size: 1.8rem;
-      }
-
-      .hero-title {
-        font-size: 1.8rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1rem;
-      }
-
-      .hero-button {
-        padding: 12px 25px;
-        font-size: 1rem;
-      }
-
-      .nav-card {
-        width: 100px;
-        height: 90px;
-      }
-
-      .nav-card span {
-        font-size: 0.75rem;
-      }
-
-      .scroll-down {
-        margin-left: 42%;
-      }
-
-      #donde-estamos h2 {
-        font-size: 1.8rem;
-      }
-
-      #donde-estamos iframe {
-        width: 95%;
-        height: 200px;
-      }
-
-      .carousel-content figure {
-        width: 200px;
-      }
-
-      .carousel-content img {
-        height: 130px;
-      }
-
-      .carousel-content figcaption {
-        font-size: 0.9rem;
-      }
-
-      .marquee-content img {
-        height: 50px;
-        max-width: 90px;
-      }
-
-      .accordion-section h2 {
-        font-size: 1.8rem;
-      }
-
-      .accordion-header {
-        padding: 12px;
-        font-size: 1rem;
-      }
-
-      .top-dark-section .phone-number {
-        font-size: 1.3rem;
-        padding: 0 10px;
-      }
-
-      .contact-section h2 {
-        font-size: 2rem;
-      }
-
-      .icon-circle {
-        width: 60px;
-        height: 60px;
-      }
-
-      .icon-circle i {
-        font-size: 1.8rem;
-      }
-
-      .contact-card h3 {
-        font-size: 1.3rem;
-      }
-
-      .contact-card p {
-        font-size: 0.9rem;
-      }
-
-      .contact-hours {
-        font-size: 1rem;
-        padding: 15px 18px;
-      }
-
-      .footer-logo img {
-        width: 150px;
-      }
-    }
-  </style>
-   <link rel="stylesheet" href="CSS/variable.css" />
-  <link rel="stylesheet" href="CSS/layout.css" />
-  <link rel="stylesheet" href="CSS/componente.css" />
-  <link rel="stylesheet" href="CSS/footer.css" />
-
-  <!-- Favicon (link.png) -->
-  <link rel="icon" href="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/link1.png"
-    type="image/png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador de Archivos Supabase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .file-item, .folder-item {
+            transition: all 0.2s ease;
+        }
+        .file-item:hover, .folder-item:hover {
+            background-color: #f9fafb;
+        }
+        .breadcrumb-item {
+            transition: all 0.2s ease;
+        }
+        .breadcrumb-item:hover {
+            color: #3b82f6;
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .drag-area {
+            border: 2px dashed #d1d5db;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .drag-area.active {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+    </style>
 </head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-800">Explorador de Archivos</h1>
+                <p class="text-gray-600 mt-2">Navega y gestiona archivos en Supabase Storage</p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full flex items-center">
+                    <i class="fas fa-database mr-1"></i> Conectado a Supabase
+                </div>
+                <button id="refreshBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center">
+                    <i class="fas fa-sync-alt mr-2"></i> Actualizar
+                </button>
+                <button id="uploadBtn" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center">
+                    <i class="fas fa-upload mr-2"></i> Subir archivo
+                </button>
+            </div>
+        </header>
 
-<body>
-
-
-  <!-- Botón hamburguesa -->
-  <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false"
-    aria-controls="side-menu">
-    <i class="fas fa-bars" aria-hidden="true"></i>
-    <i class="fas fa-xmark" aria-hidden="true"></i>
-  </button>
-
-  <!-- Menú lateral -->
-  <nav id="side-menu" class="side-menu" role="navigation" aria-label="Menú principal">
-    <ul style="list-style:none; padding:0; margin:0;">
-
-      <li>
-        <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/logo2.png"
-          alt="Logo Contraloría Estado Nueva Esparta" class="menu-logo" />
-      </li>
-
-      <li><a href="#quienes-somos"><i class="fas fa-users"></i> Quiénes Somos</a></li>
-      <li><a href="#quienes-somos"><i class="fas fa-bullseye"></i> Misión</a></li>
-      <li><a href="#quienes-somos"><i class="fas fa-eye"></i> Visión</a></li>
-      <li><a href="#beneficios"><i class="fas fa-handshake"></i> Valores</a></li>
-      <li><a href="#" id="openNewsModal"><i class="fas fa-newspaper"></i> Noticias</a></li>
-      <li><a href="#enfoque"><i class="fas fa-briefcase"></i> Beneficios</a></li>
-      <li><a href="#top-dark-section"><i class="fas fa-file-signature"></i> Declarar</a></li>
-      <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
-      <li><a href="#contacto"><i class="fas fa-clock"></i> Horario</a></li>
-      <li><a href="#marquee-section"><i class="fas fa-link"></i> Enlaces</a></li>
-      <li><a href="#donde-estamos"><i class="fas fa-map-marker-alt"></i> Dónde Estamos</a></li>
-      <li><a href="#" id="openOrganigramaMenu"><i class="fas fa-sitemap"></i>Organigrama</a></li>
-      <li><a href="#" id="openLawsModal"><i class="fas fa-balance-scale"></i> Leyes</a></li>
-      <li><a href="#accordion-section"><i class="fas fa-question-circle"></i> Preguntas Frecuentes</a></li>
-    </ul>
-  </nav>
-
-
-
-
-
-
-
-
-  <!-- Hero Section -->
-  <section  class="hero-section">
-    <div class="container">
-      <div class="hero-content animate-fadeInUp">
-      
-        <div style="margin-top: 10%;">
-          <img  src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/logo2.png"
-          alt="Logo Contraloría Estado Nueva Esparta" style="width: 20%; height: auto;" />
-        </div>
-        <h1 class="hero-title">
-         <b style="color: rgb(255, 255, 19);" > Contraloría del Estado Nueva Esparta</b>
-          <span class="hero-gradient-text">Vigilancia y Transparencia para el Pueblo Neoespartano</span>
-        </h1>
-
-          <p class="hero-subtitle">
-          Órgano superior de control fiscal al servicio de la administración pública estadal de Nueva Esparta
-        </p>
-
-          <a class="hero-button animate-scaleIn" href="#quienes-somos" onclick="scrollToSection('quienes-somos')">
-          Conócenos
-        </a>
-
-        <!-- Hero Navigation Cards -->
-        <nav style="margin-bottom: 10%;" class="hero-nav-cards" aria-label="Navegación principal">
-          <button class="nav-card" onclick="scrollToSection('quienes-somos')" type="button">
-            <div class="nav-card-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
-            <span>Quiénes Somos</span>
-          </button>
-          <button class="nav-card" onclick="scrollToSection('donde-estamos')" type="button">
-            <div class="nav-card-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
-            <span>Dónde Estamos</span>
-          </button>
-          <button class="nav-card" onclick="scrollToSection('contacto')" type="button">
-            <div class="nav-card-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
-            <span>Contacto</span>
-          </button>
+        <!-- Breadcrumb Navigation -->
+        <nav id="breadcrumb" class="bg-white rounded-xl shadow-md p-4 mb-6 flex items-center space-x-2">
+            <button id="rootBtn" class="text-blue-500 hover:text-blue-700 font-medium flex items-center">
+                <i class="fas fa-home mr-1"></i> Inicio
+            </button>
+            <!-- Breadcrumb items will be added here dynamically -->
         </nav>
-        <br>
-      </div>
-      <hr>
-    </div>
 
-
-    <style>
-  /* Mejoras responsivas para la sección Hero */
-  .hero-content img {
-    max-width: 25%;
-    height: auto;
-    transition: all 0.3s ease;
-  }
-
-  /* Ajustes para el título con nuevos colores */
-  .hero-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-   }
-
-  .hero-title .hero-gradient-text {
-    background: linear-gradient(90deg, #4CAF50, #2196F3); /* Verde a Azul */
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: block;
-  }
-
-  /* Mejoras para las flechas de scroll */
-  .scroll-down {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    margin: 20px auto;
-    width: 40px;
-    gap: 8px;
-    justify-content: center;
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .scroll-down .arrow {
-    width: 20px;
-    height: 20px;
-    border-bottom: 4px solid white;
-    border-right: 4px solid white;
-    transform: rotate(45deg);
-    animation: bounce 1.5s infinite;
-    opacity: 0.75;
-  }
-
-  /* Responsividad para móviles */
-  @media (max-width: 768px) {
-    .hero-content img {
-      max-width: 60%;
-      margin-top: 5% !important;
-    }
-    
-    .hero-title {
-      font-size: 1.8rem;
-    }
-    
-    .hero-subtitle {
-      font-size: 1rem;
-    }
-    
-    .scroll-down {
-      bottom: 20px;
-    }
-    
-    .scroll-down .arrow {
-      width: 15px;
-      height: 15px;
-      border-bottom: 3px solid white;
-      border-right: 3px solid white;
-    }
-    
-    .nav-card {
-      width: 100px;
-      height: 90px;
-    }
-    
-    .nav-card span {
-      font-size: 0.75rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero-content img {
-      max-width: 70%;
-    }
-    
-    .hero-title {
-      font-size: 1.5rem;
-    }
-    
-    .nav-card {
-      width: 85px;
-      height: 80px;
-    }
-    
-    .nav-card-icon {
-      font-size: 1.2rem;
-    }
-  }
-</style>
-  </section>
-
- <!-- Sección Quiénes Somos -->
-  <section id="quienes-somos" class="quienes-somos-section container">
-    <h2 class="section-title animate-fadeInDown">¿Quiénes Somos?</h2>
-    <p class="section-subtitle animate-fadeInDown">
-      Órgano superior de control fiscal encargado de velar por la correcta administración de los recursos públicos en el
-      Estado Nueva Esparta.
-    </p>
-
-    <div class="quienes-grid">
-      <!-- Misión -->
-      <div class="flip-card animate-fadeInUp">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="card-icon bg-blue-100 border border-blue-200">
-              <i class="fas fa-bullseye text-blue-600 opacity-80"></i>
+        <!-- Upload Section -->
+        <div id="uploadSection" class="bg-white rounded-xl shadow-md p-6 mb-6 hidden">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Subir archivo</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Selección de archivo -->
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Archivo a subir:</label>
+                    <div id="dragArea" class="drag-area p-4 text-center cursor-pointer">
+                        <div class="py-4">
+                            <i class="fas fa-cloud-upload-alt text-3xl text-blue-500 mb-2"></i>
+                            <p class="text-gray-600 text-sm">Arrastra y suelta tu archivo aquí</p>
+                            <p class="text-xs text-gray-500 mt-1">o</p>
+                            <label for="fileInput" class="mt-1 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded text-sm inline-block cursor-pointer">
+                                <i class="fas fa-folder-open mr-1"></i> Seleccionar archivo
+                            </label>
+                            <input type="file" id="fileInput" class="hidden">
+                        </div>
+                    </div>
+                    <div class="mt-2 text-center">
+                        <p id="selectedFileName" class="text-sm text-gray-600">Ningún archivo seleccionado</p>
+                        <p id="selectedFileSize" class="text-xs text-gray-500"></p>
+                    </div>
+                </div>
             </div>
-            <h3 class="card-title">Misión</h3>
-            <p class="card-description">Garantizar la transparencia y el buen uso de los recursos públicos.</p>
-          </div>
-          <div class="flip-card-back">
-            <ul class="card-details">
-              <li><span class="text-blue-600 opacity-80">✓</span> Supervisión eficaz y oportuna</li>
-              <li><span class="text-blue-600 opacity-80">✓</span> Promoción de la responsabilidad pública</li>
-              <li><span class="text-blue-600 opacity-80">✓</span> Fomento del desarrollo sostenible</li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
-      <!-- Visión -->
-      <div class="flip-card animate-fadeInUp" style="animation-delay: 0.2s">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="card-icon bg-green-100 border border-green-200">
-              <i class="fas fa-eye text-green-600 opacity-80"></i>
+            <div class="flex justify-end space-x-3 mt-6">
+                <button id="cancelUploadBtn" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">
+                    Cancelar
+                </button>
+                <button id="startUploadBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center disabled:bg-gray-400 disabled:cursor-not-allowed">
+                    <i class="fas fa-upload mr-2"></i> Subir archivo
+                </button>
             </div>
-            <h3 class="card-title">Visión</h3>
-            <p class="card-description">Ser un referente en control fiscal y transparencia en el Estado Nueva Esparta.
-            </p>
-          </div>
-          <div class="flip-card-back">
-            <ul class="card-details">
-              <li><span class="text-green-600 opacity-80">✓</span> Institución eficiente y confiable</li>
-              <li><span class="text-green-600 opacity-80">✓</span> Compromiso con la sociedad</li>
-              <li><span class="text-green-600 opacity-80">✓</span> Innovación y mejora continua</li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
-      <!-- Valores -->
-      <div class="flip-card animate-fadeInUp" style="animation-delay: 0.4s">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="card-icon bg-purple-100 border border-purple-200">
-              <i class="fas fa-handshake text-purple-600 opacity-80"></i>
+            <!-- Progress Section -->
+            <div id="progressSection" class="hidden mt-6">
+                <h3 class="text-lg font-medium text-gray-800 mb-2">Progreso de subida</h3>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium truncate" id="uploadFileName">archivo.txt</span>
+                        <span class="text-xs text-gray-500" id="uploadPercent">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div id="uploadProgressBar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <div class="flex justify-between mt-1">
+                        <span class="text-xs text-gray-500" id="uploadStatus">Esperando...</span>
+                    </div>
+                </div>
             </div>
-            <h3 class="card-title">Valores</h3>
-            <p class="card-description">Integridad, responsabilidad y compromiso con el ciudadano.</p>
-          </div>
-          <div class="flip-card-back">
-            <ul class="card-details">
-              <li><span class="text-purple-600 opacity-80">✓</span> Transparencia</li>
-              <li><span class="text-purple-600 opacity-80">✓</span> Ética profesional</li>
-              <li><span class="text-purple-600 opacity-80">✓</span> Servicio al ciudadano</li>
-            </ul>
-          </div>
         </div>
-      </div>
+
+        <!-- Content Section -->
+        <section class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold text-gray-800">Contenido en <span id="currentLocation">Raíz</span></h2>
+                <span id="itemCount" class="text-sm text-gray-500">0 elementos</span>
+            </div>
+            
+            <div id="loadingIndicator" class="text-center py-12">
+                <i class="fas fa-spinner fa-spin text-3xl text-blue-500 mb-2"></i>
+                <p class="text-gray-600">Cargando contenido...</p>
+            </div>
+            
+            <div id="emptyState" class="hidden text-center py-12 bg-white rounded-xl shadow-md">
+                <i class="fas fa-folder-open text-4xl text-gray-300 mb-4"></i>
+                <h3 class="text-lg font-medium text-gray-600 mb-2">Directorio vacío</h3>
+                <p class="text-gray-500">No hay archivos ni carpetas en este directorio.</p>
+            </div>
+            
+            <!-- Files and Folders Grid -->
+            <div id="contentGrid" class="bg-white rounded-xl shadow-md overflow-hidden hidden">
+                <div class="grid grid-cols-1">
+                    <div class="border-b border-gray-200 p-4 font-medium text-gray-700 bg-gray-50 flex justify-between items-center">
+                        <span>Contenido</span>
+                        <span class="text-sm font-normal text-gray-500" id="contentCount">0 elementos</span>
+                    </div>
+                    <div id="contentList" class="divide-y divide-gray-100">
+                        <!-- Los archivos y carpetas se mostrarán aquí dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-  </section>
 
-  <!-- Dónde Estamos -->
-  <section id="donde-estamos">
-    <h2>Dónde Estamos</h2>
-    <p>Nos encontramos en la Av. Constitución, La Asunción 6311, Nueva Esparta, Venezuela.</p>
-
-    <iframe src="https://www.google.com/maps?q=11.027129,-63.862253&hl=es&z=17&output=embed" allowfullscreen=""
-      loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación Contraloría Nueva Esparta">
-    </iframe>
-
-    <a class="btn-map-link" href="https://maps.app.goo.gl/GDYG4PbykCYHsFui6" target="_blank">
-      Ir a Google Maps
-    </a>
-  </section>
-
-  <!-- Sección de Enfoque -->
-  <section class="container section-focus" id="enfoque">
-    <div class="hero-text">
-      <h1>¿En qué nos enfocamos?</h1>
-      <p>La Contraloría del Estado Nueva Esparta orienta sus esfuerzos hacia el fortalecimiento de la administración
-        pública mediante la fiscalización y el control de los recursos públicos.</p>
-    </div>
-
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="icon-wrapper icon-audit"></div>
-        <h3>Auditorías</h3>
-        <p>Ejecutamos auditorías a entes públicos para garantizar la transparencia en la gestión gubernamental.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrapper icon-transparency"></div>
-        <h3>Transparencia</h3>
-        <p>Promovemos el acceso a la información pública y la rendición de cuentas ciudadana.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrapper icon-prevention"></div>
-        <h3>Prevención</h3>
-        <p>Diseñamos estrategias para prevenir actos de corrupción en todos los niveles del Estado.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-wrapper icon-control"></div>
-        <h3>Control Fiscal</h3>
-        <p>Supervisamos el uso de fondos públicos para asegurar su destino и efectividad.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Carrusel - Nuestra Institución -->
-   <div>
-    <!-- Sección Carrusel - Nuestra Institución -->
-    <section id="carousel-section" aria-label="Carrusel de imágenes institucional con descripciones" class="horizontal-section">
-      <h2 class="carousel-title" tabindex="0">Nuestra Institución</h2>
-
-      <div class="carousel-marquee">
-        <!-- Flechas de navegación -->
-        <div class="carousel-nav">
-          <div class="carousel-arrow left" id="prevArrow" aria-label="Imagen anterior">
-            <i class="fas fa-chevron-left"></i>
-          </div>
-          <div class="carousel-arrow right" id="nextArrow" aria-label="Imagen siguiente">
-            <i class="fas fa-chevron-right"></i>
-          </div>
+    <!-- Modal para previsualización -->
+    <div id="previewModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl overflow-hidden max-w-4xl w-full mx-4">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h3 id="modalTitle" class="text-lg font-semibold">Vista previa</h3>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-4 max-h-[70vh] overflow-auto">
+                <img id="modalImage" src="" alt="Vista previa" class="max-w-full mx-auto">
+            </div>
+            <div class="flex justify-end p-4 border-t">
+                <a id="downloadBtn" href="#" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center">
+                    <i class="fas fa-download mr-2"></i> Descargar
+                </a>
+            </div>
         </div>
+    </div>
+
+    <!-- Modal de confirmación para eliminación -->
+    <div id="deleteConfirmModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl overflow-hidden max-w-md w-full mx-4">
+            <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Confirmar eliminación</h3>
+                <p class="text-gray-600 mb-4" id="deleteConfirmText">¿Está seguro de que desea eliminar este elemento?</p>
+                <div class="flex justify-end space-x-3">
+                    <button id="cancelDeleteBtn" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">
+                        Cancelar
+                    </button>
+                    <button id="confirmDeleteBtn" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
+                        Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuración de Supabase
+        const supabaseUrl = 'https://jqpoqwrallgsqzshtped.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpxcG9xd3JhbGxnc3F6c2h0cGVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc0NzM2NTcsImV4cCI6MjA3MzA0OTY1N30.U1V0gCQyKIQNsIRUw4RamaZzvVXYUcdaZhhXxP-YvG8';
+        const bucketName = 'cebne';
         
-        <div class="carousel-content" id="carouselContent">
-          <!-- Imágenes se insertan dinámicamente -->
-        </div>
-      </div>
-      
-      <!-- Contenedor de puntos de navegación -->
-      <div class="carousel-pagination" id="carouselPagination"></div>
-    </section>
-    <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Sección horizontal (sin efecto diagonal) */
-    .horizontal-section {
-      position: relative;
-      padding: 4rem 0;
-      background: linear-gradient(135deg, #0f172a 0%, #0f172a 100%);
-    }
-
-    /* Carrusel styles */
-    #carousel-section {
-      color: white;
-      text-align: center;
-      padding: 3rem 0;
-    }
-
-    .carousel-title {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .carousel-marquee {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      margin: 0 auto;
-      max-width: 1200px;
-    }
-
-    .carousel-content {
-      display: flex;
-      gap: 40px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      scrollbar-width: none; /* Firefox */
-      padding: 20px 0;
-    }
-
-    .carousel-content::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Edge */
-    }
-
-    .carousel-content figure {
-      flex: 0 0 auto;
-      width: 350px;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s;
-    }
-
-    .carousel-content figure:hover {
-      transform: translateY(-5px);
-    }
-
-    .carousel-content img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .carousel-content figcaption {
-      padding: 15px;
-      color: #333;
-      font-weight: 500;
-      background: white;
-      text-align: center;
-    }
-
-    /* Pagination dots */
-    .carousel-pagination {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-      gap: 10px;
-    }
-
-    .carousel-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.5);
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    .carousel-dot:hover {
-      background-color: rgba(255, 255, 255, 0.8);
-      transform: scale(1.2);
-    }
-
-    .carousel-dot.active {
-      background-color: #fff;
-      transform: scale(1.2);
-    }
-
-    /* Navigation arrows */
-    .carousel-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    .carousel-arrow {
-      width: 50px;
-      height: 50px;
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      pointer-events: auto;
-      color: white;
-      font-size: 24px;
-    }
-
-    .carousel-arrow:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-      transform: scale(1.1);
-    }
-
-    .carousel-arrow.left {
-      margin-left: 15px;
-    }
-
-    .carousel-arrow.right {
-      margin-right: 15px;
-    }
-
-    /* Hide arrows on mobile */
-    @media (max-width: 768px) {
-      .carousel-nav {
-        display: none;
-      }
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 900px) {
-      .carousel-content figure {
-        width: 300px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .carousel-title {
-        font-size: 2rem;
-      }
-      
-      .carousel-content figure {
-        width: 250px;
-      }
-    }
-  </style>
-
-     <script>
-    // Script para el carrusel (sin cambios)
-    const imagesSrc = [
-      {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1721399409669.jpg', alt: 'Imagen 1', desc: 'Vista panorámica del lugar'},
-      {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1727101293107.jpg', alt: 'Imagen 2', desc: 'Detalle arquitectónico en primer plano'},
-      {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1727101540455.jpg', alt: 'Imagen 3', desc: 'Perspectiva lateral de la estructura'},
-      {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1727101292917.jpg', alt: 'Imagen 4', desc: 'Registro frontal del entorno'}
-    ];
-
-    const carouselContent = document.getElementById("carouselContent");
-    const carouselPagination = document.getElementById("carouselPagination");
-    const prevArrow = document.getElementById("prevArrow");
-    const nextArrow = document.getElementById("nextArrow");
-    let currentSlide = 0;
-    let autoScrollInterval;
-    let isManualScroll = false;
-
-    // Crear puntos de paginación
-    function createPaginationDots() {
-      for (let i = 0; i < imagesSrc.length; i++) {
-        const dot = document.createElement('div');
-        dot.classList.add('carousel-dot');
-        if (i === 0) dot.classList.add('active');
-        dot.setAttribute('data-index', i);
-        dot.addEventListener('click', () => goToSlide(i));
-        carouselPagination.appendChild(dot);
-      }
-    }
-
-    // Ir a slide específico
-    function goToSlide(slideIndex) {
-      isManualScroll = true;
-      
-      // Pausar animación automática temporalmente
-      carouselContent.style.animationPlayState = "paused";
-      clearInterval(autoScrollInterval);
-      
-      currentSlide = slideIndex;
-      const slideWidth = carouselContent.children[0].offsetWidth + 40; // width + gap
-      carouselContent.scrollLeft = slideIndex * slideWidth;
-      
-      // Actualizar punto activo
-      updateActiveDot();
-      
-      // Reanudar animación automática después de un tiempo
-      setTimeout(() => {
-        isManualScroll = false;
-        carouselContent.style.animationPlayState = "running";
-        startAutoScroll();
-      }, 3000);
-    }
-
-    // Navegar al slide anterior
-    function prevSlide() {
-      let newSlide = currentSlide - 1;
-      if (newSlide < 0) newSlide = imagesSrc.length - 1;
-      goToSlide(newSlide);
-    }
-
-    // Navegar al slide siguiente
-    function nextSlide() {
-      let newSlide = currentSlide + 1;
-      if (newSlide >= imagesSrc.length) newSlide = 0;
-      goToSlide(newSlide);
-    }
-
-    // Iniciar scroll automático
-    function startAutoScroll() {
-      clearInterval(autoScrollInterval);
-      autoScrollInterval = setInterval(() => {
-        if (!isManualScroll) {
-          nextSlide();
+        // Variables globales
+        let currentPath = '';
+        let selectedFile = null;
+        let itemToDelete = null;
+        
+        // Elementos DOM
+        const breadcrumb = document.getElementById('breadcrumb');
+        const rootBtn = document.getElementById('rootBtn');
+        const refreshBtn = document.getElementById('refreshBtn');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const uploadSection = document.getElementById('uploadSection');
+        const dragArea = document.getElementById('dragArea');
+        const fileInput = document.getElementById('fileInput');
+        const selectedFileName = document.getElementById('selectedFileName');
+        const selectedFileSize = document.getElementById('selectedFileSize');
+        const startUploadBtn = document.getElementById('startUploadBtn');
+        const cancelUploadBtn = document.getElementById('cancelUploadBtn');
+        const progressSection = document.getElementById('progressSection');
+        const uploadFileName = document.getElementById('uploadFileName');
+        const uploadPercent = document.getElementById('uploadPercent');
+        const uploadProgressBar = document.getElementById('uploadProgressBar');
+        const uploadStatus = document.getElementById('uploadStatus');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const emptyState = document.getElementById('emptyState');
+        const contentGrid = document.getElementById('contentGrid');
+        const contentList = document.getElementById('contentList');
+        const contentCount = document.getElementById('contentCount');
+        const currentLocation = document.getElementById('currentLocation');
+        const itemCount = document.getElementById('itemCount');
+        const previewModal = document.getElementById('previewModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const closeModal = document.getElementById('closeModal');
+        const deleteConfirmModal = document.getElementById('deleteConfirmModal');
+        const deleteConfirmText = document.getElementById('deleteConfirmText');
+        const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+        
+        // Headers para las solicitudes a la API
+        const apiHeaders = {
+            'apikey': supabaseKey,
+            'Authorization': `Bearer ${supabaseKey}`,
+            'Content-Type': 'application/json'
+        };
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar la aplicación
+            loadContent();
+            
+            // Evento para actualizar
+            refreshBtn.addEventListener('click', loadContent);
+            
+            // Eventos para navegación
+            rootBtn.addEventListener('click', () => {
+                navigateTo('');
+            });
+            
+            // Eventos para subida de archivos
+            uploadBtn.addEventListener('click', () => {
+                uploadSection.classList.remove('hidden');
+            });
+            
+            cancelUploadBtn.addEventListener('click', () => {
+                uploadSection.classList.add('hidden');
+                resetUploadForm();
+            });
+            
+            // Eventos para drag and drop
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dragArea.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            dragArea.addEventListener('dragover', () => {
+                dragArea.classList.add('active');
+            });
+            
+            dragArea.addEventListener('dragleave', () => {
+                dragArea.classList.remove('active');
+            });
+            
+            dragArea.addEventListener('drop', (e) => {
+                dragArea.classList.remove('active');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    handleFileSelection(files[0]);
+                }
+            });
+            
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    handleFileSelection(e.target.files[0]);
+                }
+            });
+            
+            dragArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            startUploadBtn.addEventListener('click', uploadFile);
+            
+            // Eventos para el modal de previsualización
+            closeModal.addEventListener('click', () => {
+                previewModal.classList.add('hidden');
+            });
+            
+            // Eventos para el modal de confirmación de eliminación
+            cancelDeleteBtn.addEventListener('click', () => {
+                deleteConfirmModal.classList.add('hidden');
+                itemToDelete = null;
+            });
+            
+            confirmDeleteBtn.addEventListener('click', deleteItem);
+        });
+        
+        // Función para navegar entre directorios
+        function navigateTo(path) {
+            currentPath = path;
+            loadContent();
+            updateBreadcrumb();
         }
-      }, 5000); // Cambiar slide cada 5 segundos
-    }
-
-    // Actualizar punto activo basado en la posición de desplazamiento
-    function updateActiveDot() {
-      const scrollPosition = carouselContent.scrollLeft;
-      const slideWidth = carouselContent.children[0].offsetWidth + 40; // width + gap
-      const activeIndex = Math.round(scrollPosition / slideWidth) % imagesSrc.length;
-      
-      document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-        if (index === activeIndex) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
+        
+        // Función para actualizar el breadcrumb
+        function updateBreadcrumb() {
+            // Limpiar breadcrumb (excepto el botón de inicio)
+            while (breadcrumb.children.length > 1) {
+                breadcrumb.removeChild(breadcrumb.lastChild);
+            }
+            
+            // Si estamos en la raíz, no agregar más elementos
+            if (!currentPath) return;
+            
+            // Dividir la ruta en partes
+            const parts = currentPath.split('/').filter(part => part !== '');
+            let accumulatedPath = '';
+            
+            // Agregar cada parte al breadcrumb
+            parts.forEach((part, index) => {
+                accumulatedPath += part + '/';
+                
+                const span = document.createElement('span');
+                span.className = 'text-gray-400';
+                span.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                breadcrumb.appendChild(span);
+                
+                const button = document.createElement('button');
+                button.className = 'breadcrumb-item text-blue-500 hover:text-blue-700 font-medium';
+                button.textContent = decodeURIComponent(part);
+                button.addEventListener('click', () => {
+                    // Para navegar al directorio correcto, necesitamos la ruta completa hasta este punto
+                    const targetPath = accumulatedPath.slice(0, -1); // Eliminar la última barra
+                    navigateTo(targetPath);
+                });
+                
+                breadcrumb.appendChild(button);
+            });
         }
-      });
-      
-      currentSlide = activeIndex;
-    }
-
-    // Insertar imágenes en el carrusel y duplicarlas para efecto infinito
-    for (let i = 0; i < 2; i++) {
-      imagesSrc.forEach(imgData => {
-        const figure = document.createElement("figure");
-        const img = document.createElement("img");
-        const caption = document.createElement("figcaption");
-
-        img.src = imgData.src;
-        img.alt = imgData.alt;
-        caption.textContent = imgData.desc;
-
-        figure.appendChild(img);
-        figure.appendChild(caption);
-        carouselContent.appendChild(figure);
-      });
-    }
-
-    // Inicializar paginación y auto scroll
-    createPaginationDots();
-    startAutoScroll();
-
-    // Agregar event listeners para las flechas
-    prevArrow.addEventListener("click", prevSlide);
-    nextArrow.addEventListener("click", nextSlide);
-
-    // --- Drag / Touch ---
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    carouselContent.addEventListener("mousedown", e => {
-      isDown = true;
-      carouselContent.style.animationPlayState = "paused";
-      startX = e.pageX - carouselContent.offsetLeft;
-      scrollLeft = carouselContent.scrollLeft;
-    });
-    
-    carouselContent.addEventListener("mouseleave", () => { 
-      isDown = false; 
-      if (!isManualScroll) {
-        carouselContent.style.animationPlayState = "running";
-      }
-    });
-    
-    carouselContent.addEventListener("mouseup", () => {
-      isDown = false;
-      updateActiveDot();
-      if (!isManualScroll) {
-        carouselContent.style.animationPlayState = "running";
-      }
-    });
-    
-    carouselContent.addEventListener("mousemove", e => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - carouselContent.offsetLeft;
-      const walk = (x - startX) * 2;
-      carouselContent.scrollLeft = scrollLeft - walk;
-    });
-
-    carouselContent.addEventListener("touchstart", e => {
-      isDown = true;
-      carouselContent.style.animationPlayState = "paused";
-      startX = e.touches[0].pageX - carouselContent.offsetLeft;
-      scrollLeft = carouselContent.scrollLeft;
-    });
-    
-    carouselContent.addEventListener("touchend", () => {
-      isDown = false;
-      updateActiveDot();
-      if (!isManualScroll) {
-        carouselContent.style.animationPlayState = "running";
-      }
-    });
-    
-    carouselContent.addEventListener("touchmove", e => {
-      if (!isDown) return;
-      const x = e.touches[0].pageX - carouselContent.offsetLeft;
-      const walk = (x - startX) * 2;
-      carouselContent.scrollLeft = scrollLeft - walk;
-    });
-
-    // Actualizar punto activo al hacer scroll
-    carouselContent.addEventListener("scroll", updateActiveDot);
-  </script>
-  </div>
-
-  <!-- Sección Instagram -->
-  <section id="instagram" class="instagram-section">
-    <h2 style="font-size: 2.8rem; font-weight: bold; color: #003366; margin-bottom: 5%; border-bottom: 4px solid #003366; display: inline-block; padding-bottom: 10px;">
-      Nuestras redes sociales
-    </h2>
-
-    <div style="display:flex; justify-content:center;">
-      <div style="width:100%; max-width:700px; border-radius:20px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.15);">
-        <iframe src="https://www.instagram.com/contraloria.nuevaesparta/embed"
-          style="width:100%; height:600px; border:none; overflow:hidden;" scrolling="no" allowtransparency="true"
-          allow="encrypted-media">
-        </iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Beneficios -->
-  <section id="beneficios" class="quienes-somos-section container">
-    <h2 class="benefits-title">Nuestros Servicios y Beneficios</h2>
-    <p class="benefits-subtitle">Trabajamos para garantizar la transparencia y el buen uso de los recursos públicos.</p>
-    
-    <div style="margin-top: 25px;" class="quienes-grid">
-      <!-- Beneficio 1 -->
-      <div class="flip-card animate-fadeInUp">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="card-icon bg-blue-100 border border-blue-200">
-              <i class="fas fa-balance-scale text-blue-600 opacity-80"></i>
-            </div>
-            <h3 class="card-title">Transparencia</h3>
-            <p class="card-description">Gestión clara y accesible para todos.</p>
-          </div>
-          <div class="flip-card-back">
-            <ul class="card-details">
-              <li><span class="text-blue-600 opacity-80">✓</span> Informes públicos regulares</li>
-              <li><span class="text-blue-600 opacity-80">✓</span> Acceso a datos abiertos</li>
-              <li><span class="text-blue-600 opacity-80">✓</span> Control ciudadano activo</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Beneficio 2 -->
-      <div class="flip-card animate-fadeInUp" style="animation-delay: 0.2s">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="card-icon bg-green-100 border border-green-200">
-              <i class="fas fa-shield-alt text-green-600 opacity-80"></i>
-            </div>
-            <h3 class="card-title">Control Fiscal</h3>
-            <p class="card-description">Supervisión efectiva del gasto público.</p>
-          </div>
-          <div class="flip-card-back">
-            <ul class="card-details">
-              <li><span class="text-green-600 opacity-80">✓</span> Auditorías periódicas</li>
-              <li><span class="text-green-600 opacity-80">✓</span> Prevención de irregularidades</li>
-              <li><span class="text-green-600 opacity-80">✓</span> Promoción de buenas prácticas</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Beneficio 3 -->
-      <div class="flip-card animate-fadeInUp" style="animation-delay: 0.4s">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div class="card-icon bg-purple-100 border border-purple-200">
-              <i class="fas fa-hands-helping text-purple-600 opacity-80"></i>
-            </div>
-            <h3 class="card-title">Servicio al Ciudadano</h3>
-            <p class="card-description">Atención y apoyo constante a la comunidad.</p>
-          </div>
-          <div class="flip-card-back">
-            <ul class="card-details">
-              <li><span class="text-purple-600 opacity-80">✓</span> Canales de comunicación abiertos</li>
-              <li><span class="text-purple-600 opacity-80">✓</span> Respuesta rápida a solicitudes</li>
-              <li><span class="text-purple-600 opacity-80">✓</span> Programas de educación fiscal</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Teléfono -->
-  <div id="top-dark-section" class="top-dark-section">
-    <p>Es importante señalar que, en caso de dudas, se pueden comunicar a través de la línea de consulta.
-    <span style="padding-bottom: 25px;" class="phone-number">0800-DECLARA (3325272)</span>
-    </p>
-  </div>
-
-  <!-- Sección Video Institucional -->
-  <section id="video-institucional" style="padding: 60px 20px; background: linear-gradient(180deg, #f5f5f5, #e0e0e0);">
-    <div style="margin-top: 20px; max-width: 1000px; margin: auto; text-align: center;">
-      <h2 style="font-size: 2.8rem; font-weight: bold; color: #003366; margin-bottom: 20px; border-bottom: 4px solid #0059b3; display: inline-block; padding-bottom: 10px;">
-        Video Institucional
-      </h2>
-
-      <p style="font-size: 1.2rem; color: #333; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
-        Conozca la misión, visión y compromiso institucional de la Contraloría del Estado Nueva Esparta en este breve
-        audiovisual.
-      </p>
-
-      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-        <iframe 
-          src="https://www.youtube.com/embed/8klsl7DgwKE" 
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
-          title="Video Institucional de la Contraloría del Estado Nueva Esparta"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Enlaces de Interés -->
-  <section id="marquee-section" class="marquee-section">
-    <h2 class="section-title">Enlaces de Interés</h2>
-    <div class="marquee">
-      <div class="marquee-content">
-        <!-- Logos (1era repetición) -->
-        <a href="https://www.youtube.com/c/Contraloria" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/LOGOCGR.png"
-            alt="Contraloría">
-        </a>
-        <a href="https://www.cne.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/cne.png" alt="CNE">
-        </a>
-        <a href="https://www.seniat.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/seniat.png"
-            alt="SENIAT">
-        </a>
-        <a href="http://www.presidencia.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/PRODURADURIA.png"
-            alt="Presidencia">
-        </a>
-        <a href="http://www.gobiernoenlinea.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/gobierno.png"
-            alt="Gobierno en Línea">
-        </a>
-        <a href="https://www.asambleanacional.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/Asamblea.png"
-            alt="Asamblea Nacional">
-        </a>
-        <a href="https://sudebip.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/SUDEBIP.png"
-            alt="SUDEBIP">
-        </a>
-        <a href="http://www.tsj.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/Tribunal.png"
-            alt="TSJ">
-        </a>
-        <a href="http://www.defensoria.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/Defensoria.png"
-            alt="Defensoría del Pueblo">
-        </a>
-
-        <!-- Duplicados para efecto infinito -->
-        <a href="https://www.youtube.com/c/Contraloria" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/LOGOCGR.png"
-            alt="Contraloría">
-        </a>
-        <a href="https://www.cne.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/cne.png" alt="CNE">
-        </a>
-        <a href="https://www.seniat.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/seniat.png"
-            alt="SENIAT">
-        </a>
-        <a href="http://www.presidencia.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/PRODURADURIA.png"
-            alt="Presidencia">
-        </a>
-        <a href="http://www.gobiernoenlinea.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/gobierno.png"
-            alt="Gobierno en Línea">
-        </a>
-        <a href="https://www.asambleanacional.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/asamblea.png"
-            alt="Asamblea Nacional">
-        </a>
-        <a href="https://sudebip.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/SUDEBIP.png"
-            alt="SUDEBIP">
-        </a>
-        <a href="http://www.tsj.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/tribunal.png"
-            alt="TSJ">
-        </a>
-        <a href="http://www.defensoria.gob.ve/" target="_blank">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/defensoria.png"
-            alt="Defensoría del Pueblo">
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección de Preguntas Frecuentes - CENTRO DE AYUDA -->
-   
-  <section id="accordion-section" class="accordion-section">
-    <h2 class="section-title">Centro de Ayuda</h2>
-    <p class="section-subtitle">Encuentra respuestas a tus preguntas frecuentes</p>
-    
-    <div class="accordion">
-      <div class="accordion-item">
-        <button class="accordion-header">
-          ¿Dónde puedo realizar una denuncia?
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="accordion-content">
-          <div class="accordion-content-inner">
-            <p>Puedes realizar una denuncia a través del portal web, en la sección de "Atención al Ciudadano", o de manera presencial en la sede de la Contraloría del Estado Nueva Esparta.</p>
-            <p>Para denuncias en línea, necesitarás crear una cuenta en nuestro sistema y proporcionar la información requerida sobre tu caso. Asegúrate de tener a mano todos los documentos relevantes antes de comenzar el proceso.</p>
-            <p>Si prefieres hacerlo de manera presencial, nuestro horario de atención es de lunes a viernes de 8:00 am a 4:00 pm. Te recomendamos agendar una cita previamente para reducir tus tiempos de espera.</p>
-            <p>También contamos con una línea telefónica especial para orientación sobre denuncias: 0800-DENUNCIAS (336862427). Este servicio está disponible de lunes a viernes en horario de oficina.</p>
-            <p>Todas las denuncias son tratadas con estricta confidencialidad. Una vez recibida tu denuncia, se te asignará un número de caso para que puedas hacer seguimiento a su estado.</p>
-            <a href="https://www.cgr.gob.ve/contenido/047" target="_blank" class="ir-btn">
-              Ir al portal
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="accordion-item">
-        <button class="accordion-header">
-          ¿Cómo solicito información?
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="accordion-content">
-          <div class="accordion-content-inner">
-            <p>Puedes solicitar información a través de nuestro portal de transparencia o mediante solicitud escrita dirigida a nuestra oficina de Acceso a la Información Pública.</p>
-            <p>El proceso de solicitud de información está regulado por la Ley de Transparencia y Acceso a la Información Pública. Tienes derecho to request and receive information of a public nature, except that classified as confidential or reserved by law.</p>
-            <a href="#" class="ir-btn">
-              Más información
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="accordion-item">
-        <button class="accordion-header">
-          ¿Qué documentos necesito para presentar una queja?
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="accordion-content">
-          <div class="accordion-content-inner">
-            <p>Los documentos requeridos varían según el tipo de queja. Generalmente necesitarás identificación oficial, documentos que sustenten tu queja y cualquier evidencia relevante.</p>
-            <p>Para quejas relacionadas con servicios públicos, se recomienda presentar:</p>
-            <ul style="margin-left: 20px; margin-bottom: 15px;">
-              <li>Copia de tu identificación oficial</li>
-              <li>Comprobante de domicilio</li>
-              <li>Documentos relacionados con el caso (facturas, contratos, etc.)</li>
-              <li>Detalle por escrito de los hechos</li>
-              <li>Cualquier evidencia fotográfica o documental</li>
-            </ul>
-            <a href="#" class="ir-btn">
-              Ver requisitos completos
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-  <!-- Modal del Organigrama -->
-  <div id="organigramaModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="organigramaTitle"
-    tabindex="-1" aria-hidden="true">
-    <div class="modal-content" role="document">
-      <button class="modal-close" id="closeOrganigramaModal" aria-label="Cerrar modal">&times;</button>
-
-      <h3 id="organigramaTitle">Organigrama Institucional</h3>
-
-      <!-- Nivel 1 -->
-      <div class="nivel-organigrama">
-        <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/nivel1.png"
-          alt="Nivel 1 - Despacho">
-        <div class="overlay">DESPACHO: Máxima autoridad de la institución.</div>
-      </div>
-
-      <!-- Nivel 2 -->
-      <div class="nivel-organigrama">
-        <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/nivel2.png"
-          alt="Nivel 2">
-        <div class="overlay">Aquí se encuentra la Dirección General, Auditoría Interna y Atención Ciudadana.</div>
-      </div>
-
-      <!-- Nivel 3 -->
-      <div class="nivel-organigrama">
-        <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/nivel3.png"
-          alt="Nivel 3">
-        <div class="overlay">Direcciones operativas: Administración, Jurídicos, Técnica, Talento Humano, etc.</div>
-      </div>
-
-      <!-- Nivel 4 -->
-      <div class="nivel-organigrama">
-        <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/nivel4.png"
-          alt="Nivel 4">
-        <div class="overlay">Direcciones de control de la administración central, descentralizada y responsabilidades.
-        </div>
-      </div>
-
-
-      <button class="download-btn"
-        onclick="window.open('https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/organigrama.pdf', '_blank')">
-        Descargar Organigrama (PDF)
-      </button>
-    </div>
-  </div>
-
-
-  <!-- Modal Noticias -->
-  <div id="newsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="newsModalTitle" tabindex="-1">
-    <div class="modal-content" role="document">
-      <button id="closeNewsModal" aria-label="Cerrar noticias" class="modal-close">&times;</button>
-
-
-      <!-- Imagen de cabecera -->
-      <div style="text-align:center; margin-bottom:20px;">
-        <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/noticias.png"
-          alt="Noticias CEBNE" style="
-          max-width:100%; 
-          height:auto; 
-          border-radius:12px; 
-          box-shadow:0 4px 12px rgba(0,0,0,0.2); 
-          transition:transform 0.3s ease;
-       " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-      </div>
-
-      <!-- FEBRERO -->
-      <div class="pdf-section" style="margin-bottom:25px;">
-        <h3>NotiCEBNE FEBRERO 2025</h3>
-        <iframe
-          src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/FEBRERO2025.pdf"
-          width="100%" height="500px" style="border:none;"></iframe>
-        <p style="text-align:center; margin-top:8px;">
-          <a href="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/FEBRERO2025.pdf"
-            download target="_blank">📥 Descargar FEBRERO</a>
-        </p>
-      </div>
-
-      <!-- MARZO -->
-      <div class="pdf-section" style="margin-bottom:25px;">
-        <h3>NotiCEBNE MARZO 2025</h3>
-        <iframe src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/MARZO2025.pdf"
-          width="100%" height="500px" style="border:none;"></iframe>
-        <p style="text-align:center; margin-top:8px;">
-          <a href="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/MARZO2025.pdf"
-            download target="_blank">📥 Descargar MARZO</a>
-        </p>
-      </div>
-
-      <!-- ABRIL -->
-      <div class="pdf-section" style="margin-bottom:25px;">
-        <h3>NotiCEBNE ABRIL 2025</h3>
-        <iframe src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/ABRIL2025.pdf"
-          width="100%" height="500px" style="border:none;"></iframe>
-        <p style="text-align:center; margin-top:8px;">
-          <a href="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/ABRIL2025.pdf"
-            download target="_blank">📥 Descargar ABRIL</a>
-        </p>
-      </div>
-
-    </div>
-  </div>
-
-
-
-  <!-- Modal Leyes -->
-  <div id="lawsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="lawsModalTitle" tabindex="-1">
-    <div class="modal-content" role="document">
-      <button id="closeLawsModal" aria-label="Cerrar leyes" class="modal-close">&times;</button>
-
-
-
-      <!-- Imagen de cabecera -->
-      <div style="text-align:center; margin-bottom:20px;">
-        <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/leyes/leyes.png"
-          alt="Leyes CEBNE" style="
-          max-width:100%; 
-          height:auto; 
-          border-radius:12px; 
-          box-shadow:0 4px 12px rgba(0,0,0,0.2); 
-          transition:transform 0.3s ease;
-       " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-      </div>
-
-      <div class="news-list">
-        <h3>Marco Legal</h3>
-        <input type="text" id="searchLaw" placeholder="🔎 Buscar ley..."
-          style="width:100%; padding:8px; margin-bottom:15px;">
-
-        <div id="lawsContainer"></div>
-      </div>
-
-      <div class="pdf-container">
-        <iframe id="pdfPreviewLaws" src="" width="100%" height="600px" style="border:none;"></iframe>
-      </div>
-
-      <div class="download-section">
-        <a id="downloadPdfLaws" class="download-btn" href="#" download target="_blank">
-          📥 Descargar PDF
-        </a>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Contacto -->
-  <section id="contacto" class="contact-section">
-    <div class="container">
-      <h2>Contacto</h2>
-
-      <div class="contact-grid">
-
-        <!-- Tarjetas de contacto -->
-        <div class="info-cards-column">
-
-          <div class="contact-card">
-            <div class="icon-circle">
-              <i class="fas fa-phone-alt"></i>
-            </div>
-            <h3>Teléfono</h3>
-            <p><a href="tel:+582952659813" style="color: inherit; text-decoration: none;">+58 295-2659813</a></p>
-            <a href="https://wa.me/582952659813" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
-              <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
-          </div>
-
-          <div class="contact-card">
-            <div class="icon-circle">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <h3>Ubicación</h3>
-            <p>Av. Constitución, La Asunción 6311</p>
-            <a href="https://maps.google.com/?q=24GQ+R3Q+Nueva+Esparta+Venezuela" target="_blank" class="btn-map"
-              rel="noopener noreferrer">Ver en Google Maps</a>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="contact-hours">
-        <p><strong>Horario de Atención:</strong> Lunes a Viernes, 8:00 AM - 3:00 PM</p>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <img src="https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/imgs/logo1.png"
-            alt="Logo Contraloría Estado Nueva Esparta" />
-        </div>
-        <p class="footer-text">Órgano Superior de Control Fiscal del Estado Nueva Esparta</p>
-        <nav aria-label="Enlaces de pie de página">
-          <div class="footer-links">
-            <a href="#benefios">Beneficios</a>
-            <a href="#quienes-somos">Quiénes Somos</a>
-            <a href="#donde-estamos">Dónde Estamos</a>
-            <a href="#contacto">Contacto</a>
-            <a href="#marquee-section">Enlaces de Interés</a>
-            <a href="#carousel-section">Nosotros</a>
-          </div>
-        </nav>
-        <div class="copyright">
-          &copy; 2025 Contraloría del Estado Nueva Esparta. Todos los derechos reservados.
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JS-->
-  <script src="JS/scroll.js" defer></script>
-  <script src="JS/contact-form.js" defer></script>
-  <script src="JS/carousel.js" defer></script>
-  <script src="JS/info.js" defer></script>
-  <script src="JS/calendario.js" defer></script>
-  <script src="JS/menu.js" defer></script>
-  <script src="JS/modal.js" defer></script>
-  <script src="JS/acordeon.js" defer></script>
-  <script src="JS/sliderImagenes.js" defer></script>
-  <script src="JS/buscador.js" defer></script>
-
-
-
+        
+        // Función para cargar contenido del directorio actual
+        async function loadContent() {
+            loadingIndicator.classList.remove('hidden');
+            contentGrid.classList.add('hidden');
+            emptyState.classList.add('hidden');
+            
+            try {
+                // Obtener lista de archivos y carpetas desde Supabase Storage
+                // Usamos la API REST directamente para obtener mejores resultados
+                const response = await fetch(
+                    `${supabaseUrl}/storage/v1/object/list/${bucketName}`,
+                    {
+                        method: 'POST',
+                        headers: apiHeaders,
+                        body: JSON.stringify({
+                            limit: 100,
+                            offset: 0,
+                            prefix: currentPath ? currentPath + '/' : '',
+                            sortBy: {
+                                column: 'name',
+                                order: 'asc'
+                            }
+                        })
+                    }
+                );
+                
+                if (!response.ok) {
+                    throw new Error(`Error al cargar el contenido: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Separar archivos y carpetas
+                const folders = data.filter(item => item.id === null && item.name !== currentPath);
+                const files = data.filter(item => item.id !== null);
+                
+                renderContent(folders, files);
+                itemCount.textContent = `${folders.length + files.length} elemento${(folders.length + files.length) !== 1 ? 's' : ''}`;
+                contentCount.textContent = `${folders.length + files.length} elemento${(folders.length + files.length) !== 1 ? 's' : ''}`;
+                currentLocation.textContent = currentPath ? decodeURIComponent(currentPath) : 'Raíz';
+                
+            } catch (error) {
+                console.error('Error loading content:', error);
+                loadingIndicator.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                emptyState.innerHTML = `
+                    <i class="fas fa-exclamation-triangle text-4xl text-red-300 mb-4"></i>
+                    <h3 class="text-lg font-medium text-gray-600 mb-2">Error de carga</h3>
+                    <p class="text-gray-500">No se pudo cargar el contenido del directorio.</p>
+                    <p class="text-sm text-gray-400 mt-2">${error.message}</p>
+                `;
+            }
+        }
+        
+        // Función para renderizar contenido (archivos y carpetas)
+        function renderContent(folders, files) {
+            loadingIndicator.classList.add('hidden');
+            
+            if (folders.length === 0 && files.length === 0) {
+                emptyState.classList.remove('hidden');
+                contentGrid.classList.add('hidden');
+                return;
+            }
+            
+            // Renderizar contenido
+            contentList.innerHTML = '';
+            contentGrid.classList.remove('hidden');
+            
+            // Renderizar carpetas primero
+            folders.forEach(folder => {
+                // Extraer el nombre de la carpeta de la ruta completa
+                const folderPathParts = folder.name.split('/');
+                let folderName = folderPathParts[folderPathParts.length - 2]; // Para carpetas, el nombre está en la penúltima posición
+                
+                // Si estamos en la raíz, el nombre de la carpeta está en la primera posición
+                if (!currentPath && folderPathParts.length === 2) {
+                    folderName = folderPathParts[0];
+                }
+                
+                const folderElement = document.createElement('div');
+                folderElement.classList.add('folder-item', 'p-4', 'flex', 'items-center', 'hover:bg-gray-50', 'cursor-pointer');
+                folderElement.innerHTML = `
+                    <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-folder text-blue-400"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="text-sm font-medium text-gray-800 truncate">${decodeURIComponent(folderName)}</h3>
+                        <p class="text-xs text-gray-500">Carpeta</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button class="text-red-500 hover:text-red-700 p-2 delete-btn" data-path="${folder.name}" data-type="folder">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                
+                // Evento para navegar a la carpeta
+                folderElement.addEventListener('click', (e) => {
+                    if (!e.target.closest('.delete-btn')) {
+                        navigateTo(folder.name);
+                    }
+                });
+                
+                // Evento para eliminar carpeta
+                const deleteBtn = folderElement.querySelector('.delete-btn');
+                deleteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showDeleteConfirmation(folder.name, 'folder', decodeURIComponent(folderName));
+                });
+                
+                contentList.appendChild(folderElement);
+            });
+            
+            // Renderizar archivos
+            files.forEach(file => {
+                // Extraer el nombre del archivo de la ruta completa
+                const filePathParts = file.name.split('/');
+                const fileName = filePathParts[filePathParts.length - 1];
+                
+                const fileUrl = `${supabaseUrl}/storage/v1/object/public/${bucketName}/${file.name}`;
+                const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(fileName);
+                
+                const fileElement = document.createElement('div');
+                fileElement.classList.add('file-item', 'p-4', 'flex', 'items-center', 'hover:bg-gray-50');
+                fileElement.innerHTML = `
+                    <div class="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mr-3">
+                        ${isImage ? 
+                            `<img src="${fileUrl}" alt="${fileName}" class="w-8 h-8 object-cover rounded">` : 
+                            `<i class="fas fa-file text-gray-400"></i>`
+                        }
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="text-sm font-medium text-gray-800 truncate">${decodeURIComponent(fileName)}</h3>
+                        <p class="text-xs text-gray-500">${formatFileSize(file.metadata?.size || 0)} • ${formatDate(file.created_at)}</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <a href="${fileUrl}" download="${fileName}" class="text-blue-500 hover:text-blue-700 p-2">
+                            <i class="fas fa-download"></i>
+                        </a>
+                        ${isImage ? `
+                            <button class="text-green-500 hover:text-green-700 p-2 view-image-btn">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        ` : ''}
+                        <button class="text-red-500 hover:text-red-700 p-2 delete-btn" data-path="${file.name}" data-type="file">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                
+                // Evento para ver imagen
+                if (isImage) {
+                    const viewBtn = fileElement.querySelector('.view-image-btn');
+                    viewBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        openPreviewModal(file);
+                    });
+                }
+                
+                // Evento para eliminar archivo
+                const deleteBtn = fileElement.querySelector('.delete-btn');
+                deleteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showDeleteConfirmation(file.name, 'file', decodeURIComponent(fileName));
+                });
+                
+                contentList.appendChild(fileElement);
+            });
+            
+            emptyState.classList.add('hidden');
+        }
+        
+        // Función para mostrar confirmación de eliminación
+        function showDeleteConfirmation(path, type, name) {
+            itemToDelete = { path, type, name };
+            deleteConfirmText.textContent = `¿Está seguro de que desea eliminar ${type === 'folder' ? 'la carpeta' : 'el archivo'} "${name}"? Esta acción no se puede deshacer.`;
+            deleteConfirmModal.classList.remove('hidden');
+        }
+        
+        // Función para eliminar archivo o carpeta
+        async function deleteItem() {
+            if (!itemToDelete) return;
+            
+            deleteConfirmModal.classList.add('hidden');
+            
+            try {
+                let response;
+                
+                if (itemToDelete.type === 'file') {
+                    // Eliminar archivo individual
+                    response = await fetch(
+                        `${supabaseUrl}/storage/v1/object/${bucketName}/${itemToDelete.path}`,
+                        {
+                            method: 'DELETE',
+                            headers: {
+                                'Authorization': `Bearer ${supabaseKey}`,
+                                'apikey': supabaseKey
+                            }
+                        }
+                    );
+                } else {
+                    // Para carpetas, necesitamos eliminar todos los archivos dentro de ella primero
+                    // Obtener lista de archivos en la carpeta
+                    const listResponse = await fetch(
+                        `${supabaseUrl}/storage/v1/object/list/${bucketName}`,
+                        {
+                            method: 'POST',
+                            headers: apiHeaders,
+                            body: JSON.stringify({
+                                prefix: itemToDelete.path,
+                                sortBy: {
+                                    column: 'name',
+                                    order: 'asc'
+                                }
+                            })
+                        }
+                    );
+                    
+                    if (!listResponse.ok) {
+                        throw new Error('Error al listar contenido de la carpeta');
+                    }
+                    
+                    const data = await listResponse.json();
+                    const filesToDelete = data.filter(item => item.id !== null).map(item => item.name);
+                    
+                    if (filesToDelete.length > 0) {
+                        // Eliminar todos los archivos de la carpeta
+                        response = await fetch(
+                            `${supabaseUrl}/storage/v1/object/${bucketName}`,
+                            {
+                                method: 'DELETE',
+                                headers: {
+                                    'Authorization': `Bearer ${supabaseKey}`,
+                                    'apikey': supabaseKey,
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(filesToDelete)
+                            }
+                        );
+                    } else {
+                        // Carpeta vacía, no hay nada que eliminar
+                        response = { ok: true };
+                    }
+                }
+                
+                if (response && !response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Error al eliminar');
+                }
+                
+                // Recargar el contenido después de eliminar
+                loadContent();
+                
+            } catch (error) {
+                console.error('Error deleting item:', error);
+                alert('Error al eliminar: ' + error.message);
+            } finally {
+                itemToDelete = null;
+            }
+        }
+        
+        // Función para manejar la selección de archivos
+        function handleFileSelection(file) {
+            selectedFile = file;
+            selectedFileName.textContent = file.name;
+            selectedFileSize.textContent = formatFileSize(file.size);
+            startUploadBtn.disabled = false;
+        }
+        
+        // Función para subir archivo
+        async function uploadFile() {
+            if (!selectedFile) {
+                alert('Por favor, selecciona un archivo para subir.');
+                return;
+            }
+            
+            // Configurar la UI para la subida
+            progressSection.classList.remove('hidden');
+            uploadFileName.textContent = selectedFile.name;
+            uploadPercent.textContent = '0%';
+            uploadProgressBar.style.width = '0%';
+            uploadStatus.textContent = 'Preparando...';
+            startUploadBtn.disabled = true;
+            
+            // Crear FormData para la subida
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+            
+            // Determinar la ruta completa del archivo
+            const fileName = selectedFile.name;
+            const filePath = currentPath ? `${currentPath}/${fileName}` : fileName;
+            
+            try {
+                // Realizar la solicitud de subida
+                const response = await fetch(
+                    `${supabaseUrl}/storage/v1/object/${bucketName}/${filePath}`,
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${supabaseKey}`,
+                            'apikey': supabaseKey
+                        },
+                        body: formData
+                    }
+                );
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Error al subir el archivo');
+                }
+                
+                // Actualizar UI para mostrar éxito
+                uploadPercent.textContent = '100%';
+                uploadProgressBar.style.width = '100%';
+                uploadProgressBar.classList.add('bg-green-600');
+                uploadStatus.textContent = 'Completado';
+                
+                // Recargar el contenido después de un breve delay
+                setTimeout(() => {
+                    loadContent();
+                    resetUploadForm();
+                    uploadSection.classList.add('hidden');
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Error uploading file:', error);
+                uploadStatus.textContent = 'Error: ' + error.message;
+                uploadProgressBar.classList.add('bg-red-600');
+                startUploadBtn.disabled = false;
+            }
+        }
+        
+        // Función para resetear el formulario de subida
+        function resetUploadForm() {
+            selectedFile = null;
+            selectedFileName.textContent = 'Ningún archivo seleccionado';
+            selectedFileSize.textContent = '';
+            progressSection.classList.add('hidden');
+            startUploadBtn.disabled = true;
+            fileInput.value = '';
+        }
+        
+        // Función para abrir el modal de previsualización
+        function openPreviewModal(file) {
+            const fileUrl = `${supabaseUrl}/storage/v1/object/public/${bucketName}/${file.name}`;
+            
+            // Extraer el nombre del archivo de la ruta completa
+            const filePathParts = file.name.split('/');
+            const fileName = filePathParts[filePathParts.length - 1];
+            
+            modalTitle.textContent = fileName;
+            downloadBtn.href = fileUrl;
+            downloadBtn.download = fileName;
+            
+            modalImage.src = fileUrl;
+            previewModal.classList.remove('hidden');
+        }
+        
+        // Función auxiliar para formatear el tamaño del archivo
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // Función auxiliar para formatear la fecha
+        function formatDate(dateString) {
+            if (!dateString) return 'Fecha desconocida';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+    </script>
 </body>
-
 </html>
