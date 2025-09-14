@@ -1502,9 +1502,9 @@
           Órgano superior de control fiscal al servicio de la administración pública estadal de Nueva Esparta
         </p>
 
-          <a class="hero-button animate-scaleIn" href="#video-institucional" onclick="scrollToSection('quienes-somos')">
-             Conócenos
-          </a>
+          <a class="hero-button animate-scaleIn" href="#quienes-somos" onclick="scrollToSection('quienes-somos')">
+          Conócenos
+        </a>
 
         <!-- Hero Navigation Cards -->
         <nav style="margin-bottom: 10%;" class="hero-nav-cards" aria-label="Navegación principal">
@@ -1546,8 +1546,7 @@
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 1.5rem;
-    color: #FFD700; /* Amarillo para la primera parte */
-  }
+   }
 
   .hero-title .hero-gradient-text {
     background: linear-gradient(90deg, #4CAF50, #2196F3); /* Verde a Azul */
@@ -1761,7 +1760,7 @@
   <!-- Sección Carrusel - Nuestra Institución -->
    <div>
     <!-- Sección Carrusel - Nuestra Institución -->
-    <section id="carousel-section" aria-label="Carrusel de imágenes institucional con descripciones" class="diagonal-section">
+    <section id="carousel-section" aria-label="Carrusel de imágenes institucional con descripciones" class="horizontal-section">
       <h2 class="carousel-title" tabindex="0">Nuestra Institución</h2>
 
       <div class="carousel-marquee">
@@ -1790,26 +1789,11 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f8f9fa;
-    }
-
-    /* Diagonal section style */
-    .diagonal-section {
+    /* Sección horizontal (sin efecto diagonal) */
+    .horizontal-section {
       position: relative;
-      isolation: isolate;
       padding: 4rem 0;
-    }
-
-    .diagonal-section::after {
-      content: '';
-       position: absolute;
-      z-index: -1;
-      inset: 0;
-      transform: skewY(-3deg);
+      background: linear-gradient(135deg, #081f4b 0%, #081f4b 100%);
     }
 
     /* Carrusel styles */
@@ -1968,7 +1952,7 @@
   </style>
 
      <script>
-    // Script para el carrusel
+    // Script para el carrusel (sin cambios)
     const imagesSrc = [
       {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1721399409669.jpg', alt: 'Imagen 1', desc: 'Vista panorámica del lugar'},
       {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1727101293107.jpg', alt: 'Imagen 2', desc: 'Detalle arquitectónico en primer plano'},
@@ -2149,7 +2133,7 @@
 
   <!-- Sección Instagram -->
   <section id="instagram" class="instagram-section">
-    <h2 style="font-size: 2.8rem; font-weight: bold; color: #003366; margin-bottom: 5%; border-bottom: 4px solid #0059b3; display: inline-block; padding-bottom: 10px;">
+    <h2 style="font-size: 2.8rem; font-weight: bold; color: #003366; margin-bottom: 5%; border-bottom: 4px solid #003366; display: inline-block; padding-bottom: 10px;">
       Nuestras redes sociales
     </h2>
 
@@ -2263,7 +2247,7 @@
 
   <!-- Sección Enlaces de Interés -->
   <section id="marquee-section" class="marquee-section">
-    <h2>Enlaces de Interés</h2>
+    <h2 class="section-title">Enlaces de Interés</h2>
     <div class="marquee">
       <div class="marquee-content">
         <!-- Logos (1era repetición) -->
@@ -2344,6 +2328,7 @@
   </section>
 
   <!-- Sección de Preguntas Frecuentes - CENTRO DE AYUDA -->
+   
   <section id="accordion-section" class="accordion-section">
     <h2 class="section-title">Centro de Ayuda</h2>
     <p class="section-subtitle">Encuentra respuestas a tus preguntas frecuentes</p>
@@ -2605,14 +2590,8 @@
     });
 
     // Script para el carrusel
-    const imagesSrc = [
-      {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1721399409669.jpg', alt: 'Imagen 1', desc: 'Vista panorámica del lugar'},
-      {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1727101293107.jpg', alt: 'Imagen 2', desc: 'Detalle arquitectónico en primer plano'},
-      {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1727101540455.jpg', alt: 'Imagen 3', desc: 'Perspectiva lateral de la estructura'},
-      {src: 'https://jqpoqwrallgsqzshtped.supabase.co/storage/v1/object/public/cebne/carrusel//1727101292917.jpg', alt: 'Imagen 4', desc: 'Registro frontal del entorno'}
-    ];
+    
 
-    const carouselContent = document.getElementById("carouselContent");
 
     // Insertar imágenes en el carrusel y duplicarlas para efecto infinito
     for (let i = 0; i < 2; i++) {
@@ -2631,10 +2610,8 @@
       });
     }
 
-    // --- Drag / Touch ---
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+     
+    
 
     carouselContent.addEventListener("mousedown", e => {
       isDown = true;
