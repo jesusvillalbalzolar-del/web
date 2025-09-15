@@ -713,13 +713,10 @@
   color: white;
   text-align: center;
 
-  /* 🔹 Ocupa ancho completo */
+  /* 🔹 Igual que donde-estamos */
   width: 100%;
-  margin: 0;
-
-  /* 🔹 Menos alto */
-  min-height: 30vh; /* 60% del alto de la ventana */
-  padding: 80px 20px; /* padding moderado */
+  padding: 80px 20px;      /* Igual padding */
+  min-height: 500px;       /* Igual altura mínima */
 
   display: flex;
   flex-direction: column;
@@ -733,16 +730,15 @@
 .top-dark-section::after {
   content: '';
   position: absolute;
-  bottom: -150px; /* ajustado a nueva altura */
+  bottom: -150px; /* ajusta según se necesite */
   left: -10%;
   width: 120%;
-  height: 300px; /* más bajo */
+  height: 300px;  /* ajusta según se necesite */
   background-color: white;
   transform: rotate(-3deg);
   transform-origin: 0 100%;
   z-index: 1;
 }
-
 .top-dark-section p {
   margin: 15px auto;
   max-width: 700px;
@@ -1908,6 +1904,7 @@ body.menu-open {
   box-shadow: 0 0 6px rgba(26, 35, 126, 0.4);
 
 }
+
 
 
 
