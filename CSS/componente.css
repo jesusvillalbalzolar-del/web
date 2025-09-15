@@ -714,7 +714,7 @@
   /* Dark background as in the image */
   color: white;
   text-align: center;
-  padding: 40px 20px 210px 20px;
+  padding: 80px 80px 210px 20px;
   /* More padding at the bottom to create the angled effect indirectly */
   position: relative;
   overflow: hidden;
@@ -1902,4 +1902,5 @@ body.menu-open {
   border-color: #3949ab;
   /* azul más fuerte al foco */
   box-shadow: 0 0 6px rgba(26, 35, 126, 0.4);
+
 }
