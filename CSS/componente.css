@@ -712,11 +712,22 @@
   background-color: #0f172a;
   color: white;
   text-align: center;
-  padding: 300px 100px 400px 100px; /* 🔹 Mucho más alto */
+
+  /* 🔹 Asegura ancho completo */
+  width: 100%;
+  margin: 0; 
+  padding: 0;
+
+  /* 🔹 Ocupa toda la altura de la pantalla + extra */
+  min-height: 150vh; /* 150% del alto de la ventana */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   position: relative;
   overflow: hidden;
 }
-
 .top-dark-section::after {
   content: '';
   position: absolute;
@@ -1896,6 +1907,7 @@ body.menu-open {
   box-shadow: 0 0 6px rgba(26, 35, 126, 0.4);
 
 }
+
 
 
 
