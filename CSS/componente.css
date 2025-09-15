@@ -744,6 +744,7 @@
   font-size: 1.5em;
   font-weight: bold;
   margin-top: 20px;
+  margin-bottom: 10%;
 }
 
 .top-dark-section .phone-number {
@@ -1903,6 +1904,7 @@ body.menu-open {
   box-shadow: 0 0 6px rgba(26, 35, 126, 0.4);
 
 }
+
 
 
 
