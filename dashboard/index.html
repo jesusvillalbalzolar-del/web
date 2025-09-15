@@ -600,15 +600,20 @@
         // Función para eliminar archivo o carpeta
         async function deleteItem() {
             if (!itemToDelete) return;
-            
+
             deleteConfirmModal.classList.add('hidden');
-            
+
             try {
                 let response;
-                
+
                 if (itemToDelete.type === 'file') {
-                    // Eliminar archivo individual
-                    const encodedPath = encodeURIComponent(itemToDelete.path);
+                    // Construir la ruta completa: cebne/RUTAACTUAL/archivo
+                    let rutaCompleta = itemToDelete.path;
+                    // Si la ruta no incluye el currentPath, la agregamos
+                    if (currentPath && !rutaCompleta.startsWith(currentPath + '/')) {
+                        rutaCompleta = currentPath ? `${currentPath}/${itemToDelete.path}` : itemToDelete.path;
+                    }
+                    const encodedPath = encodeURIComponent(rutaCompleta);
                     response = await fetch(
                         `${supabaseUrl}/storage/v1/object/${bucketName}/${encodedPath}`,
                         {
@@ -621,7 +626,6 @@
                     );
                 } else {
                     // Para carpetas, necesitamos eliminar todos los archivos dentro de ella primero
-                    // Obtener lista de archivos en la carpeta
                     const listResponse = await fetch(
                         `${supabaseUrl}/storage/v1/object/list/${bucketName}`,
                         {
@@ -636,16 +640,15 @@
                             })
                         }
                     );
-                    
+
                     if (!listResponse.ok) {
                         throw new Error('Error al listar contenido de la carpeta');
                     }
-                    
+
                     const data = await listResponse.json();
                     const filesToDelete = data.filter(item => item.id !== null).map(item => item.name);
-                    
+
                     if (filesToDelete.length > 0) {
-                        // Eliminar todos los archivos de la carpeta
                         const encodedFilesToDelete = filesToDelete.map(file => encodeURIComponent(file));
                         response = await fetch(
                             `${supabaseUrl}/storage/v1/object/${bucketName}`,
@@ -660,19 +663,17 @@
                             }
                         );
                     } else {
-                        // Carpeta vacía, no hay nada que eliminar
                         response = { ok: true };
                     }
                 }
-                
+
                 if (response && !response.ok) {
                     const errorData = await response.json();
                     throw new Error(errorData.message || 'Error al eliminar');
                 }
-                
-                // Recargar el contenido después de eliminar
+
                 loadContent();
-                
+
             } catch (error) {
                 console.error('Error deleting item:', error);
                 alert('Error al eliminar: ' + error.message);
