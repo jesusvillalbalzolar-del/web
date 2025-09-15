@@ -710,7 +710,7 @@
 
 .top-dark-section {
   position: relative;
-  padding: 80px 20px;
+  padding: 20px 20px;
   background: #0f172a;
   color: white;
   clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
@@ -1903,6 +1903,7 @@ body.menu-open {
   box-shadow: 0 0 6px rgba(26, 35, 126, 0.4);
 
 }
+
 
 
 
