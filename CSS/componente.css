@@ -713,13 +713,14 @@
   color: white;
   text-align: center;
 
-  /* 🔹 Asegura ancho completo */
+  /* 🔹 Ocupa ancho completo */
   width: 100%;
-  margin: 0; 
-  padding: 0;
+  margin: 0;
 
-  /* 🔹 Ocupa toda la altura de la pantalla + extra */
-  min-height: 150vh; /* 150% del alto de la ventana */
+  /* 🔹 Menos alto */
+  min-height: 60vh; /* 60% del alto de la ventana */
+  padding: 80px 20px; /* padding moderado */
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -728,13 +729,14 @@
   position: relative;
   overflow: hidden;
 }
+
 .top-dark-section::after {
   content: '';
   position: absolute;
-  bottom: -250px; /* 🔹 Ajustado a nueva altura */
+  bottom: -150px; /* ajustado a nueva altura */
   left: -10%;
-  width: 130%; /* 🔹 Un poco más ancho */
-  height: 450px; /* 🔹 Más alto */
+  width: 120%;
+  height: 300px; /* más bajo */
   background-color: white;
   transform: rotate(-3deg);
   transform-origin: 0 100%;
@@ -742,23 +744,22 @@
 }
 
 .top-dark-section p {
-  margin: 30px auto; /* 🔹 Más espacio entre párrafos */
-  max-width: 900px; /* 🔹 Más ancho para texto */
-  font-size: 1.4em; /* 🔹 Texto más grande */
-  line-height: 2; /* 🔹 Más aire */
+  margin: 15px auto;
+  max-width: 700px;
+  font-size: 1.1em;
+  line-height: 1.6;
   position: relative;
   z-index: 2;
 }
 
 .top-dark-section .phone-number-label {
-  font-size: 2.2em;
+  font-size: 1.8em;
   font-weight: bold;
-  margin-top: 50px;
-  display: block;
+  margin-top: 20px;
 }
 
 .top-dark-section .phone-number {
-  font-size: 3.4em;
+  font-size: 2.4em;
   font-weight: bold;
 }
 
@@ -1907,6 +1908,7 @@ body.menu-open {
   box-shadow: 0 0 6px rgba(26, 35, 126, 0.4);
 
 }
+
 
 
 
