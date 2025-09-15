@@ -708,12 +708,11 @@
   font-weight: bold;
 }
 
-
 .top-dark-section {
   background-color: #0f172a;
   color: white;
   text-align: center;
-  padding: 120px 80px 250px 20px;
+  padding: 200px 100px 350px 100px; /* 🔹 Aumentado espacio arriba/abajo */
   position: relative;
   overflow: hidden;
 }
@@ -721,10 +720,10 @@
 .top-dark-section::after {
   content: '';
   position: absolute;
-  bottom: -120px;
+  bottom: -180px; /* 🔹 Ajustado para la nueva altura */
   left: -10%;
   width: 120%;
-  height: 250px;
+  height: 350px; /* 🔹 Más alto para suavizar transición */
   background-color: white;
   transform: rotate(-3deg);
   transform-origin: 0 100%;
@@ -732,36 +731,38 @@
 }
 
 .top-dark-section p {
-  margin: 5px 0;
+  margin: 20px auto; /* 🔹 Más espacio entre párrafos */
+  max-width: 800px; /* 🔹 Limita ancho para legibilidad */
+  font-size: 1.2em; /* 🔹 Aumenta tamaño texto */
+  line-height: 1.8; /* 🔹 Mejor legibilidad */
   position: relative;
   z-index: 2;
 }
 
 .top-dark-section .phone-number-label {
-  font-size: 1.4em; /* Aumentado para que coincida con el nuevo tamaño */
+  font-size: 2em;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 40px;
+  display: block;
 }
 
 .top-dark-section .phone-number {
-  font-size: 2.2em; /* Aumentado para que coincida con el nuevo tamaño */
+  font-size: 3em;
   font-weight: bold;
 }
+
 .content-section {
   background-color: white;
-  padding: 40px 20px;
+  padding: 60px 20px; /* 🔹 Más espacio interior */
   text-align: center;
   position: relative;
-  /* For proper stacking context */
   z-index: 0;
-  /* Ensure it's below the angled part of the dark section */
-
 }
 
 h2 {
   color: #333;
-  font-size: 1.8em;
-  margin-bottom: 30px;
+  font-size: 2em; /* 🔹 Más grande */
+  margin-bottom: 40px;
 }
 
 
@@ -1894,4 +1895,5 @@ body.menu-open {
   box-shadow: 0 0 6px rgba(26, 35, 126, 0.4);
 
 }
+
 
