@@ -712,7 +712,7 @@
   background-color: #0f172a;
   color: white;
   text-align: center;
-  padding: 200px 100px 350px 100px; /* 🔹 Aumentado espacio arriba/abajo */
+  padding: 300px 100px 400px 100px; /* 🔹 Mucho más alto */
   position: relative;
   overflow: hidden;
 }
@@ -720,10 +720,10 @@
 .top-dark-section::after {
   content: '';
   position: absolute;
-  bottom: -180px; /* 🔹 Ajustado para la nueva altura */
+  bottom: -250px; /* 🔹 Ajustado a nueva altura */
   left: -10%;
-  width: 120%;
-  height: 350px; /* 🔹 Más alto para suavizar transición */
+  width: 130%; /* 🔹 Un poco más ancho */
+  height: 450px; /* 🔹 Más alto */
   background-color: white;
   transform: rotate(-3deg);
   transform-origin: 0 100%;
@@ -731,29 +731,29 @@
 }
 
 .top-dark-section p {
-  margin: 20px auto; /* 🔹 Más espacio entre párrafos */
-  max-width: 800px; /* 🔹 Limita ancho para legibilidad */
-  font-size: 1.2em; /* 🔹 Aumenta tamaño texto */
-  line-height: 1.8; /* 🔹 Mejor legibilidad */
+  margin: 30px auto; /* 🔹 Más espacio entre párrafos */
+  max-width: 900px; /* 🔹 Más ancho para texto */
+  font-size: 1.4em; /* 🔹 Texto más grande */
+  line-height: 2; /* 🔹 Más aire */
   position: relative;
   z-index: 2;
 }
 
 .top-dark-section .phone-number-label {
-  font-size: 2em;
+  font-size: 2.2em;
   font-weight: bold;
-  margin-top: 40px;
+  margin-top: 50px;
   display: block;
 }
 
 .top-dark-section .phone-number {
-  font-size: 3em;
+  font-size: 3.4em;
   font-weight: bold;
 }
 
 .content-section {
   background-color: white;
-  padding: 60px 20px; /* 🔹 Más espacio interior */
+  padding: 80px 20px; /* 🔹 Aumentado también */
   text-align: center;
   position: relative;
   z-index: 0;
@@ -761,9 +761,10 @@
 
 h2 {
   color: #333;
-  font-size: 2em; /* 🔹 Más grande */
-  margin-bottom: 40px;
+  font-size: 2.2em; /* 🔹 Más grande */
+  margin-bottom: 50px;
 }
+
 
 
 .logos-container {
@@ -1895,5 +1896,6 @@ body.menu-open {
   box-shadow: 0 0 6px rgba(26, 35, 126, 0.4);
 
 }
+
 
 
