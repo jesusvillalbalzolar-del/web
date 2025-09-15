@@ -35,6 +35,19 @@
             border-color: #3b82f6;
             background-color: #eff6ff;
         }
+        .url-display {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            padding: 0.5rem;
+            font-family: monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .bg-blue-50 {
+            background-color: #eff6ff;
+        }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
@@ -126,6 +139,20 @@
                 <span id="itemCount" class="text-sm text-gray-500">0 elementos</span>
             </div>
             
+            <!-- Ruta actual y URL del archivo seleccionado -->
+            <div id="pathInfo" class="bg-white rounded-xl shadow-md p-4 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-700 mb-1">Ruta actual:</h3>
+                        <div id="currentPathDisplay" class="url-display">/</div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-700 mb-1">URL del archivo seleccionado:</h3>
+                        <div id="selectedFileUrl" class="url-display">Ningún archivo seleccionado</div>
+                    </div>
+                </div>
+            </div>
+            
             <div id="loadingIndicator" class="text-center py-12">
                 <i class="fas fa-spinner fa-spin text-3xl text-blue-500 mb-2"></i>
                 <p class="text-gray-600">Cargando contenido...</p>
@@ -200,6 +227,7 @@
         let currentPath = '';
         let selectedFile = null;
         let itemToDelete = null;
+        let selectedFilePath = null;
         
         // Elementos DOM
         const breadcrumb = document.getElementById('breadcrumb');
@@ -234,6 +262,9 @@
         const deleteConfirmText = document.getElementById('deleteConfirmText');
         const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
         const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+        const pathInfo = document.getElementById('pathInfo');
+        const currentPathDisplay = document.getElementById('currentPathDisplay');
+        const selectedFileUrl = document.getElementById('selectedFileUrl');
         
         // Headers para las solicitudes a la API
         const apiHeaders = {
@@ -241,11 +272,19 @@
             'Authorization': `Bearer ${supabaseKey}`,
             'Content-Type': 'application/json'
         };
+
+        // Función auxiliar para construir la URL correcta de un archivo
+        function buildFileUrl(filePath) {
+            const baseUrl = `${supabaseUrl}/storage/v1/object/public/${bucketName}/${currentPath}`;
+            if (!filePath) return baseUrl;
+            return `${baseUrl}/${encodeURIComponent(filePath)}`;
+        }
         
         // Event Listeners
         document.addEventListener('DOMContentLoaded', () => {
             // Inicializar la aplicación
             loadContent();
+            updatePathInfo();
             
             // Evento para actualizar
             refreshBtn.addEventListener('click', loadContent);
@@ -322,6 +361,17 @@
             currentPath = path;
             loadContent();
             updateBreadcrumb();
+            updatePathInfo();
+            // Resetear la selección de archivo al cambiar de directorio
+            selectedFilePath = null;
+            selectedFileUrl.textContent = 'Ningún archivo seleccionado';
+        }
+        
+        // Función para actualizar la información de la ruta
+        function updatePathInfo() {
+            const displayPath = currentPath ? `/${currentPath}` : '/';
+            currentPathDisplay.textContent = displayPath;
+            pathInfo.classList.remove('hidden');
         }
         
         // Función para actualizar el breadcrumb
@@ -368,7 +418,6 @@
             
             try {
                 // Obtener lista de archivos y carpetas desde Supabase Storage
-                // Usamos la API REST directamente para obtener mejores resultados
                 const response = await fetch(
                     `${supabaseUrl}/storage/v1/object/list/${bucketName}`,
                     {
@@ -431,13 +480,8 @@
             // Renderizar carpetas primero
             folders.forEach(folder => {
                 // Extraer el nombre de la carpeta de la ruta completa
-                const folderPathParts = folder.name.split('/');
-                let folderName = folderPathParts[folderPathParts.length - 2]; // Para carpetas, el nombre está en la penúltima posición
-                
-                // Si estamos en la raíz, el nombre de la carpeta está en la primera posición
-                if (!currentPath && folderPathParts.length === 2) {
-                    folderName = folderPathParts[0];
-                }
+                const folderPathParts = folder.name.split('/').filter(part => part !== '');
+                const folderName = folderPathParts[folderPathParts.length - 1] || 'Carpeta';
                 
                 const folderElement = document.createElement('div');
                 folderElement.classList.add('folder-item', 'p-4', 'flex', 'items-center', 'hover:bg-gray-50', 'cursor-pointer');
@@ -479,11 +523,12 @@
                 const filePathParts = file.name.split('/');
                 const fileName = filePathParts[filePathParts.length - 1];
                 
-                const fileUrl = `${supabaseUrl}/storage/v1/object/public/${bucketName}/${file.name}`;
+                // Construir la URL correcta usando la función auxiliar
+                const fileUrl = buildFileUrl(file.name);
                 const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(fileName);
                 
                 const fileElement = document.createElement('div');
-                fileElement.classList.add('file-item', 'p-4', 'flex', 'items-center', 'hover:bg-gray-50');
+                fileElement.classList.add('file-item', 'p-4', 'flex', 'items-center', 'hover:bg-gray-50', 'cursor-pointer');
                 fileElement.innerHTML = `
                     <div class="flex-shrink-0 w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mr-3">
                         ${isImage ? 
@@ -509,6 +554,19 @@
                         </button>
                     </div>
                 `;
+                
+                // Evento para seleccionar archivo y mostrar su URL
+                fileElement.addEventListener('click', (e) => {
+                    if (!e.target.closest('.delete-btn') && !e.target.closest('.view-image-btn') && !e.target.closest('a')) {
+                        selectedFilePath = file.name;
+                        selectedFileUrl.textContent = fileUrl;
+                        // Resaltar el archivo seleccionado
+                        document.querySelectorAll('.file-item').forEach(item => {
+                            item.classList.remove('bg-blue-50');
+                        });
+                        fileElement.classList.add('bg-blue-50');
+                    }
+                });
                 
                 // Evento para ver imagen
                 if (isImage) {
@@ -550,8 +608,9 @@
                 
                 if (itemToDelete.type === 'file') {
                     // Eliminar archivo individual
+                    const encodedPath = encodeURIComponent(itemToDelete.path);
                     response = await fetch(
-                        `${supabaseUrl}/storage/v1/object/${bucketName}/${itemToDelete.path}`,
+                        `${supabaseUrl}/storage/v1/object/${bucketName}/${encodedPath}`,
                         {
                             method: 'DELETE',
                             headers: {
@@ -587,6 +646,7 @@
                     
                     if (filesToDelete.length > 0) {
                         // Eliminar todos los archivos de la carpeta
+                        const encodedFilesToDelete = filesToDelete.map(file => encodeURIComponent(file));
                         response = await fetch(
                             `${supabaseUrl}/storage/v1/object/${bucketName}`,
                             {
@@ -596,7 +656,7 @@
                                     'apikey': supabaseKey,
                                     'Content-Type': 'application/json'
                                 },
-                                body: JSON.stringify(filesToDelete)
+                                body: JSON.stringify(encodedFilesToDelete)
                             }
                         );
                     } else {
@@ -651,11 +711,12 @@
             // Determinar la ruta completa del archivo
             const fileName = selectedFile.name;
             const filePath = currentPath ? `${currentPath}/${fileName}` : fileName;
+            const encodedFilePath = encodeURIComponent(filePath);
             
             try {
                 // Realizar la solicitud de subida
                 const response = await fetch(
-                    `${supabaseUrl}/storage/v1/object/${bucketName}/${filePath}`,
+                    `${supabaseUrl}/storage/v1/object/${bucketName}/${encodedFilePath}`,
                     {
                         method: 'POST',
                         headers: {
@@ -704,7 +765,8 @@
         
         // Función para abrir el modal de previsualización
         function openPreviewModal(file) {
-            const fileUrl = `${supabaseUrl}/storage/v1/object/public/${bucketName}/${file.name}`;
+            // Construir la URL correcta usando la función auxiliar
+            const fileUrl = buildFileUrl(file.name);
             
             // Extraer el nombre del archivo de la ruta completa
             const filePathParts = file.name.split('/');
@@ -714,6 +776,7 @@
             downloadBtn.href = fileUrl;
             downloadBtn.download = fileName;
             
+            // Para imágenes, cargar la imagen correctamente codificada
             modalImage.src = fileUrl;
             previewModal.classList.remove('hidden');
         }
@@ -737,6 +800,31 @@
                 day: 'numeric'
             });
         }
+
+        // Función para verificar políticas de almacenamiento
+        async function verifyStoragePolicies() {
+            try {
+                // Verificar que el bucket existe y es accesible
+                const response = await fetch(
+                    `${supabaseUrl}/storage/v1/bucket/${bucketName}`,
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${supabaseKey}`,
+                            'apikey': supabaseKey
+                        }
+                    }
+                );
+                
+                if (!response.ok) {
+                    console.warn('El bucket podría no existir o no tener políticas configuradas correctamente');
+                }
+            } catch (error) {
+                console.error('Error verificando políticas:', error);
+            }
+        }
+
+        // Ejecutar verificación de políticas al cargar
+        document.addEventListener('DOMContentLoaded', verifyStoragePolicies);
     </script>
 </body>
 </html>

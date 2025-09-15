@@ -817,13 +817,10 @@ h2 {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .top-dark-section {
-    padding: 30px 15px 100px 15px;
-  }
+ 
+  
 
-  .top-dark-section .phone-number {
-    font-size: 1.5em;
-  }
+  
 
   .logos-container {
     gap: 20px;
@@ -843,13 +840,8 @@ h2 {
 }
 
 @media (max-width: 480px) {
-  .top-dark-section {
-    padding: 20px 10px 80px 10px;
-  }
 
-  .top-dark-section .phone-number {
-    font-size: 1.2em;
-  }
+  
 
   h2 {
     font-size: 1.5em;
