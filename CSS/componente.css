@@ -732,7 +732,7 @@
   z-index: 1;
 }
 .top-dark-section p {
-  margin: 15px auto;
+  margin: 10% auto;
   max-width: 700px;
   font-size: 1.1em;
   line-height: 1.6;
@@ -743,7 +743,7 @@
 .top-dark-section .phone-number-label {
   font-size: 1.5em;
   font-weight: bold;
-  margin-top: 20px;
+
   margin-bottom: 10%;
 }
 
@@ -767,10 +767,6 @@ h2 {
   display: inline-block;
   /* Ajusta ancho al texto */
   border-bottom: 4px solid #0059b3;
-  /* Línea azul debajo */
-  margin-bottom: 20px;
-  padding-bottom: 8px;
-  /* Espacio entre texto y línea */
 }
 
 
@@ -1904,6 +1900,7 @@ body.menu-open {
   box-shadow: 0 0 6px rgba(26, 35, 126, 0.4);
 
 }
+
 
 
 
