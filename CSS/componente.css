@@ -709,28 +709,41 @@
 }
 
 .top-dark-section {
-  position: relative;
-  padding: 20px 20px;
-  background: #0f172a;
+  background-color: #0f172a;
   color: white;
-  clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
-  /* Centra el contenido dentro del contenedor */
+
+  width: 100%;
+  margin: 0;
+
+  /* 🔹 Mucho menos espacio */
+  padding: 40px 20px 80px 20px;  /* top, right, bottom, left */
+
+  /* 🔹 Opcional: limitar altura */
+  min-height: 250px;             /* antes estaba mucho más alto */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
 }
 
 .top-dark-section::after {
   content: '';
   position: absolute;
-  bottom: -150px; /* ajusta según se necesite */
+  bottom: -100px; /* ajustado a la nueva altura */
   left: -10%;
   width: 120%;
-  height: 300px;  /* ajusta según se necesite */
+  height: 200px; /* menos alto */
   background-color: white;
   transform: rotate(-3deg);
   transform-origin: 0 100%;
   z-index: 1;
 }
+
 .top-dark-section p {
   margin: 10% auto;
   max-width: 700px;
@@ -1900,6 +1913,7 @@ body.menu-open {
   box-shadow: 0 0 6px rgba(26, 35, 126, 0.4);
 
 }
+
 
 
 
