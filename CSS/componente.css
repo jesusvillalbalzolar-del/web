@@ -711,52 +711,42 @@
 
 .top-dark-section {
   background-color: #0f172a;
-  /* Dark background as in the image */
   color: white;
   text-align: center;
-  padding: 80px 80px 210px 20px;
-  /* More padding at the bottom to create the angled effect indirectly */
+  padding: 120px 80px 250px 20px;
   position: relative;
   overflow: hidden;
-  /* Needed for the pseudo-element */
 }
 
 .top-dark-section::after {
   content: '';
   position: absolute;
-  bottom: -100px;
-  /* Adjust to control the angle */
+  bottom: -120px;
   left: -10%;
   width: 120%;
-  height: 200px;
-  /* Height of the angled part */
+  height: 250px;
   background-color: white;
-  /* Color of the lower section */
   transform: rotate(-3deg);
-  /* Adjust the angle as needed */
   transform-origin: 0 100%;
   z-index: 1;
-  /* Ensure it's above the dark section text */
 }
 
 .top-dark-section p {
   margin: 5px 0;
   position: relative;
-  /* Bring text above the pseudo-element */
   z-index: 2;
 }
 
 .top-dark-section .phone-number-label {
-  font-size: 1.2em;
+  font-size: 1.4em; /* Aumentado para que coincida con el nuevo tamaño */
   font-weight: bold;
   margin-top: 20px;
 }
 
 .top-dark-section .phone-number {
-  font-size: 1.8em;
+  font-size: 2.2em; /* Aumentado para que coincida con el nuevo tamaño */
   font-weight: bold;
 }
-
 .content-section {
   background-color: white;
   padding: 40px 20px;
@@ -1904,3 +1894,4 @@ body.menu-open {
   box-shadow: 0 0 6px rgba(26, 35, 126, 0.4);
 
 }
+
